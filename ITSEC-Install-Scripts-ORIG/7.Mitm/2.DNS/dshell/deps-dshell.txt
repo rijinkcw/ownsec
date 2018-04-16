@@ -1,0 +1,6 @@
+python-epydoc
+python-crypto 
+python-dpkt 
+python-ipy 
+python-pypcap
+python-pip

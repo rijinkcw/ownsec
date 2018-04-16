@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=bettercap
+Encoding=UTF-8
+Exec=bash -ic "sudo bettercap --help;${SHELL:-bash}"
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=7.Mitm;

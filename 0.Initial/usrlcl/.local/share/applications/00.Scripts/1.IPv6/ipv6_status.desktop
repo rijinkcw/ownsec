@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Status
+Encoding=UTF-8
+Exec=sh -c "ipv6_status.sh;${SHELL:-bash}"
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=00.Scripts;1.IPv6;
