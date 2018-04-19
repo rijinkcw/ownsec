@@ -48,11 +48,17 @@ ${normal}"
 
 }
 
+INSTALLMSF () {
+
+}
 INSTDEPS () {
 ### DEPS:
 sudo apt-get update
 sudo apt-get upgrade
-xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-thefatrat.txt") -r -- sudo apt-get install -y
+#xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-thefatrat.txt") -r -- sudo apt-get install -y
+sudo apt-get install apache2 zenity zenity-common monodevelop gnome-terminal
+sudo apt-get install lib32z1-dev lib32stdc++6 lib32stdc++6-4.7-dev lib32ncurses5-dev mingw-w64
+sudo apt-get install proguard upx-ucl libmagickwand-dev zipalign git
 sudo updatedb
 sudo ldconfig
 ### DEPS END
