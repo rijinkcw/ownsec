@@ -5,21 +5,28 @@
 
 BINDIR=/usr/local/bin
 
-# font
+# color 
+
 bold=$(tput bold)
 normal=$(tput sgr0)
-#END font
-
-# color 
 
 RED1='\033[91m'
 ORANGE1='\033[93m'
-GREEN1='\033[92m'
+GREEN1='\e[0;32m'
 BLUE1='\033[94m'
 CYAN1='\033[96m'
 WHITE1='\033[97m'
 YELLOW1='\033[93m'
 MAGENTA1='\033[95m'
+CYAN='\e[0;36m'
+GREEN='\e[0;32m'
+lightgreen='\e[0;32m'
+WHITE='\e[0;37m'
+RED='\e[0;31m'
+YELLOW='\e[0;33m'
+BLUE='\e[0;34m'
+PURPLE='\e[0;35m'
+ORANGE='\e[38;5;166m'
 
 #END color
 
@@ -38,13 +45,6 @@ GITRESET () {
 	git pull
 }
 # END clean up repo
-# init submodules
-GITSBMDLINIT () {
-	git submodule init
-	git submodule update --recursive
-	sudo updatedb && sudo ldconfig
-}
-# END init submodules
 
 # git clone 
 GITCLONEFUNC () {
@@ -54,6 +54,15 @@ git clone -b $BRANCH $GITREPO
 cd $GITREPOROOT
 }
 # END git clone 
+
+# init submodules
+GITSBMDLINIT () {
+	git submodule init
+	git submodule update --recursive
+	sudo updatedb && sudo ldconfig
+}
+# END init submodules
+
 
 # END - git repository related functions
 ############################

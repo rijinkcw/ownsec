@@ -2,15 +2,6 @@
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
-cyan='\e[0;36m'
-green='\e[0;32m'
-lightgreen='\e[0;32m'
-white='\e[0;37m'
-red='\e[0;31m'
-yellow='\e[0;33m'
-blue='\e[0;34m'
-purple='\e[0;35m'
-orange='\e[38;5;166m'
 
 GITREPO=https://github.com/Screetsec/TheFatRat
 BRANCH=master
@@ -24,6 +15,13 @@ DSKTPFLSDEST=/home/$USER/.local/share/applications/9.Maintain-Access/1.OS-Backdo
 DSKTPFL=thefatrat.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/thefatrat
 #hd6cv
+
+STP="$GITREPOROOT/logs/check"
+ARCH=`uname -m`
+INST=$GITREPOROOT/logs/install.log
+LOG=$GITREPOROOT/logs/setup.log
+CONFIG=$GITREPOROOT/config/config.path
+
 
 echo "${bold}
  _____ _   _ _____ _____ _  _____ ____      _  _____ 
@@ -107,17 +105,11 @@ echo "${bold}
 setting vars
 ${normal}"
 
-stp="$GITREPOROOT/logs/check"
-arch=`uname -m`
-inst=$GITREPOROOT/logs/install.log
-log=$GITREPOROOT/logs/setup.log
-config=$GITREPOROOT/config/config.path
-
 echo "${bold}
 #Checking for DX and in case exists then check if it is version 1.8 used in fatrat (latest android sdk) 
 ${normal}"
 
-touch "$config"
+touch "$CONFIG"
 #Checking for DX and in case exists then check if it is version 1.8 used in fatrat (latest android sdk) 
 which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -127,10 +119,10 @@ case $dxv in
 1.8)
 #DX exists and it is version 1.8
 rm -rf temp/dx >/dev/null 2>&1
-which dx >> "$log" 2>&1
-echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.8"
-echo "DX -> OK" >> "$inst"
+which dx >> "$LOG" 2>&1
+echo "dx" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e $GREEN1 "[ ✔ ] DX 1.8"
+echo "DX -> OK" >> "$INST"
 ;;
 *)
 #DX does not exists or is not 1.8 version
@@ -141,14 +133,14 @@ sudo ln -s "$GITREPOROOT/tools/android-sdk/dx" "/usr/local/sbin/dx" > /dev/null 
 sudo udpatedb
 sudo which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-which dx >> "$log" 2>&1
-echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.8"
-echo "DX -> OK" >> "$inst"
+which dx >> "$LOG" 2>&1
+echo "dx" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e $GREEN1 "[ ✔ ] DX 1.8"
+echo "DX -> OK" >> "$INST"
 else
-echo -e $red "[ x ] DX 1.8"
-echo "0" > "$stp"
-echo "DX -> Not OK" >> "$inst"
+echo -e $RED1 "[ x ] DX 1.8"
+echo "0" > "$STP"
+echo "DX -> Not OK" >> "$INST"
 fi
 ;;
 esac
@@ -158,14 +150,14 @@ sudo ln -s "$GITREPOROOT/tools/android-sdk/dx" "/usr/local/sbin/dx" > /dev/null 
 sudo updatedb
 sudo which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-sudo which dx >> "$log" 2>&1
-echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.8"
-echo "DX -> OK" >> "$inst"
+sudo which dx >> "$LOG" 2>&1
+echo "dx" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e $GREEN1 "[ ✔ ] DX 1.8"
+echo "DX -> OK" >> "$INST"
 else
-echo -e $red "[ x ] DX 1.8"
-echo "0" > "$stp"
-echo "DX -> Not OK" >> "$inst"
+echo -e $RED1 "[ x ] DX 1.8"
+echo "0" > "$STP"
+echo "DX -> Not OK" >> "$INST"
 fi
 fi
 echo "${bold}
@@ -178,10 +170,10 @@ aptv=`aapt v | awk '{print $5}'`
 case $aptv in
 v0.2-3821160)
 #exists and it is v0.2-3821160
-sudo which aapt >> "$log" 2>&1
-echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3821160"
-echo "Aapt -> OK" >> "$inst"
+sudo which aapt >> "$LOG" 2>&1
+echo "aapt" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e $GREEN1 "[ ✔ ] Aapt v0.2-3821160"
+echo "Aapt -> OK" >> "$INST"
 ;;
 *)
 #Aapt does not exists or is not the latest version used in fatrat (android sdk)
@@ -192,14 +184,14 @@ sudo ln -s "$GITREPOROOT/tools/android-sdk/aapt" "/usr/local/sbin/aapt" > /dev/n
 sudo updatedb
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-which aapt >> "$log" 2>&1
-echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3821160"
-echo "Aapt -> OK" >> "$inst"
+which aapt >> "$LOG" 2>&1
+echo "aapt" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e $GREEN1 "[ ✔ ] Aapt v0.2-3821160"
+echo "Aapt -> OK" >> "$INST"
 else
-echo -e $red "[ x ] Aapt v0.2-3821160"
-echo "0" > "$stp"
-echo "Aapt -> Not OK" >> "$inst"
+echo -e $RED1 "[ x ] Aapt v0.2-3821160"
+echo "0" > "$STP"
+echo "Aapt -> Not OK" >> "$INST"
 fi
 ;;
 esac
@@ -209,14 +201,14 @@ sudo ln -s "$GITREPOROOT/tools/android-sdk/aapt" "/usr/local/sbin/aapt" > /dev/n
 sudo updatedb
 sudo which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-sudo which aapt >> "$log" 2>&1
-echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3821160"
-echo "Aapt -> OK" >> "$inst"
+sudo which aapt >> "$LOG" 2>&1
+echo "aapt" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e $GREEN1 "[ ✔ ] Aapt v0.2-3821160"
+echo "Aapt -> OK" >> "$INST"
 else
-echo -e $red "[ x ] Aapt v0.2-3821160"
-echo "0" > "$stp"
-echo "Aapt -> Not OK" >> "$inst"
+echo -e $RED1 "[ x ] Aapt v0.2-3821160"
+echo "0" > "$STP"
+echo "Aapt -> Not OK" >> "$INST"
 fi
 fi
 
@@ -229,10 +221,10 @@ if [ "$?" -eq "0" ]; then
 apk=`apktool | sed -n 1p | awk '{print $2}'` > /dev/null 2>&1
 case $apk in 
 v.2.2.2)
-which apktool >> "$log" 2>&1
-echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Apktool v.2.2.2"
-echo "Apktool -> OK" >> "$inst"
+which apktool >> "$LOG" 2>&1
+echo "apktool" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e $GREEN1 "[ ✔ ] Apktool v.2.2.2"
+echo "Apktool -> OK" >> "$INST"
 ;;
 *)
 #xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
@@ -242,14 +234,14 @@ sudo ln -s "$GITREPOROOT/tools/apktool2.2.2/apktool" "/usr/local/sbin/apktool" >
 sudo updatedb
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Apktool v.2.2.2"
-which apktool >> "$log" 2>&1
-echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo "Apktool -> OK" >> "$inst"
+echo -e $GREEN1 "[ ✔ ] Apktool v.2.2.2"
+which apktool >> "$LOG" 2>&1
+echo "apktool" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo "Apktool -> OK" >> "$INST"
 else
-echo -e $red "[ x ] Apktool v.2.2.2"
-echo "0" > "$stp"
-echo "Apktool -> Not OK" >> "$inst"
+echo -e $RED1 "[ x ] Apktool v.2.2.2"
+echo "0" > "$STP"
+echo "Apktool -> Not OK" >> "$INST"
 fi
 ;;
 esac
@@ -259,14 +251,14 @@ sudo ln -s "$GITREPOROOT/tools/apktool2.2.2/apktool" "/usr/local/sbin/apktool" >
 sudo updatedb
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-which apktool >> "$log" 2>&1
-echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Apktool v.2.2.2"
-echo "Apktool -> OK" >> "$inst"
+which apktool >> "$LOG" 2>&1
+echo "apktool" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e $GREEN1 "[ ✔ ] Apktool v.2.2.2"
+echo "Apktool -> OK" >> "$INST"
 else
-echo -e $red "[ x ] Apktool v.2.2.2"
-echo "0" > "$stp"
-echo "Apktool -> Not OK" >> "$inst"
+echo -e $RED1 "[ x ] Apktool v.2.2.2"
+echo "0" > "$STP"
+echo "Apktool -> Not OK" >> "$INST"
 fi
 fi
 
@@ -282,10 +274,10 @@ d2j=`cat temp/dex | sed -n 19p | awk '{print $2}' | cut -f1 -d','`
 case $d2j in
 reader-2.0)
 rm -rf temp/dex >/dev/null 2>&1
-which d2j-dex2jar >> "$log" 2>&1
-echo "d2j-dex2jar" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Dex2Jar 2.0"
-echo "Dex2Jar -> OK" >> "$inst"
+which d2j-dex2jar >> "$LOG" 2>&1
+echo "d2j-dex2jar" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e $GREEN1 "[ ✔ ] Dex2Jar 2.0"
+echo "Dex2Jar -> OK" >> "$INST"
 ;;
 *)
 rm -rf temp/dex >/dev/null 2>&1
@@ -311,15 +303,15 @@ which d2j-dex2jar > /dev/null 2>&1
 #After new instalation , check if dex2jar is working
 if [ "$?" -eq "0" ]; then
 #Dex2jar was suceffully installed
-echo -e $green "[ ✔ ] Dex2Jar 2.0"
-which d2j-dex2jar >> "$log" 2>&1
-echo "d2j-dex2jar" | tee -a "$config" >> /dev/null 2>&1
-echo "Dex2Jar -> OK" >> "$inst"
+echo -e $GREEN1 "[ ✔ ] Dex2Jar 2.0"
+which d2j-dex2jar >> "$LOG" 2>&1
+echo "d2j-dex2jar" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo "Dex2Jar -> OK" >> "$INST"
 else
 #After the instalation something did not worked , place the warnings in logs
-echo -e $red "[ x ] Dex2Jar 2.0"
-echo "0" > "$stp"
-echo "Dex2Jar -> Not OK" >> "$inst"
+echo -e $RED1 "[ x ] Dex2Jar 2.0"
+echo "0" > "$STP"
+echo "Dex2Jar -> Not OK" >> "$INST"
 fi
 ;;
 esac
@@ -340,14 +332,14 @@ sudo mkdir /usr/local/share/dex2jar > /dev/null 2>&1
 sudo cp -r $GITREPOROOT/tools/dex2jar/lib /usr/local/share/dex2jar/lib > /dev/null 2>&1
 which d2j-dex2jar > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Dex2Jar 2.0"
-which d2j-dex2jar >> "$log" 2>&1
-echo "d2j-dex2jar" | tee -a "$config" >> /dev/null 2>&1
-echo "Dex2Jar -> OK" >> "$inst"
+echo -e $GREEN1 "[ ✔ ] Dex2Jar 2.0"
+which d2j-dex2jar >> "$LOG" 2>&1
+echo "d2j-dex2jar" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo "Dex2Jar -> OK" >> "$INST"
 else
-echo -e $red "[ x ] Dex2Jar 2.0"
-echo "0" > "$stp"
-echo "Dex2Jar -> Not OK" >> "$inst"
+echo -e $RED1 "[ x ] Dex2Jar 2.0"
+echo "0" > "$STP"
+echo "Dex2Jar -> Not OK" >> "$INST"
 fi
 fi
 

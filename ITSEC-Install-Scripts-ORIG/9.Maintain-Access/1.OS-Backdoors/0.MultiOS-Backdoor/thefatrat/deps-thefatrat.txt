@@ -1,3 +1,4 @@
+apache2
 zenity
 zenity-common
 monodevelop
@@ -11,3 +12,4 @@ proguard
 upx-ucl
 libmagickwand-dev
 zipalign
+git

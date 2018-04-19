@@ -1,28 +1,40 @@
 #!/bin/bash
 
-#1i
-. /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
-cyan='\e[0;36m'
-green='\e[0;32m'
-lightgreen='\e[0;32m'
-white='\e[0;37m'
-red='\e[0;31m'
-yellow='\e[0;33m'
-blue='\e[0;34m'
-purple='\e[0;35m'
-orange='\e[38;5;166m'
+## Fatrat Setup - XFCE, 16.04
 
+######################## CONFIG_MAIN - START ########################
 GITREPO=https://github.com/Screetsec/TheFatRat
 BRANCH=master
 GITREPOROOT=/opt/ITSEC/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/thefatrat/Screetsec/TheFatRat
 GITCLONEDIR=/opt/ITSEC/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/thefatrat/Screetsec
-EXECUTEABLE1=fatrat
-EXECUTEABLE2=fatrat.sh
+EXECUTEABLE1=fatrat.sh
+EXECUTEABLE2=fatrat
 DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/thefatrat
 DSKTPFLSDEST=/home/$USER/.local/share/applications/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/thefatrat
 DSKTPFL=thefatrat.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/thefatrat
+
 #ph1a
+BINDIR=/usr/local/bin
+SBIN=/usr/local/sbin
+DVLL=/dev/null
+
+STP="$GITREPOROOT/logs/check"
+ARCH=`uname -m`
+INST=$GITREPOROOT/logs/install.log
+LOG=$GITREPOROOT/logs/setup.log
+CONFIG=$GITREPOROOT/config/config.path
+
+DXVRSN=1.8
+AAPTVRSN=v0.2-3821160
+APKTOOLVRSN=v.2.2.2
+DEX2JARVRSN=2.0
+
+######################## CONFIG_MAIN - END ########################
+######################## CONFIG_temp - END ########################
+
+BANNER () {
+
 echo "${bold}
  _____ _   _ _____ _____ _  _____ ____      _  _____ 
 |_   _| | | | ____|  ___/ \|_   _|  _ \    / \|_   _|
@@ -30,37 +42,31 @@ echo "${bold}
   | | |  _  | |___|  _/ ___ \| | |  _ <  / ___ \| |  
   |_| |_| |_|_____|_|/_/   \_\_| |_| \_\/_/   \_\_|  
             
-INSTALL
+INSTALL Screetsec/TheFatRat
+Script by alphaaurigae
 ${normal}"
 
-echo "${bold}
-mkdir, git clone and cd         
-${normal}"
-mkdir -p /opt/ITSEC/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/thefatrat/Screetsec
-cd /opt/ITSEC/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/thefatrat/Screetsec
-git clone https://github.com/Screetsec/TheFatRat
+}
 
-sudo updatedb
-sudo ldconfig
-
+INSTDEPS () {
 ### DEPS:
-
 sudo apt-get update
 sudo apt-get upgrade
 xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-thefatrat.txt") -r -- sudo apt-get install -y
+sudo updatedb
+sudo ldconfig
 ### DEPS END
+}
 
-echo "${bold}
-cd reporoot   
-${normal}"
+REMVUNWNTD () {
+sudo apt-get remove --purge dex2jar --force-yes -y
+sudo apt-get remove --purge aapt -y
+sudo apt-get remove --purge apktool -y
+sudo apt-get remove --purge dx -y
+}
 
-GITCLONEFUNC
-GITSBMDLINIT
-
-echo "${bold}
-chmod +x exec 
-${normal}"
-
+# make some files executeable
+CHMODX1 () {
 chmod +x $GITREPOROOT/backdoor_apk
 chmod +x $GITREPOROOT/tools/power.py
 chmod +x $GITREPOROOT/tools/android-sdk/zipalign
@@ -68,291 +74,383 @@ chmod +x $GITREPOROOT/tools/proguard5.3.2/lib/proguard
 chmod +x $GITREPOROOT/tools/android-sdk/dx
 chmod +x $GITREPOROOT/tools/android-sdk/aapt
 chmod +x $GITREPOROOT/tools/apktool2.2.2/apktool
+}
 
-echo "${bold}
-echo to and chmod exec file
-${normal}"
-
+# create .sh exec for symlink
+CREATEEXEC () {
 echo "#!/bin/bash
-
 cd /opt/ITSEC/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/thefatrat/Screetsec/TheFatRat
+./fatrat" > $EXECUTEABLE2
+}
 
-./fatrat" >> $EXECUTEABLE2
-CHMODXEX2
-CHMODXEX1
 
-echo "${bold}
-symlink
-${normal}"
-sudo rm -f /usr/local/bin/$EXECUTEABLE1
-sudo ln -s $GITREPOROOT/$EXECUTEABLE2 /usr/local/bin/$EXECUTEABLE1
-
-echo "${bold}
-symlink deps
-${normal}"
-
+# set these according to setup, custom bin linking
+CUSTOMLINK () {
 sed -i 's/which $backdoor/which backdoor-factory/' $GITREPOROOT/fatrat
 sed -i 's/which $msfvenom/which msfvenom/' $GITREPOROOT/fatrat
 sed -i 's/which $msfconsole/which msfconsole/' $GITREPOROOT/fatrat
 sed -i 's/which $aapt/which aapt/' $GITREPOROOT/fatrat
 sed -i 's/which $apktool/which apktool/' $GITREPOROOT/fatrat
+}
 
-echo "${bold}
-deps and config start
-${normal}"
+######################## CONFIG_temp - END ########################
 
-echo "${bold}
-setting vars
-${normal}"
+######################## MISC - START ########################
+# color
+bold=$(tput bold)
+normal=$(tput sgr0)
+CYAN='\e[0;36m'
+GREEN='\e[0;32m'
+WHITE='\e[0;37m'
+RED='\e[0;31m'
+YELLOW='\e[0;33m'
+BLUE='\e[0;34m'
+PURPLE='\e[0;35m'
+ORANGE='\e[38;5;166m'
 
-stp="$GITREPOROOT/logs/check"
-arch=`uname -m`
-inst=$GITREPOROOT/logs/install.log
-log=$GITREPOROOT/logs/setup.log
-config=$GITREPOROOT/config/config.path
+# git clone 
+GITCLONEFUNC () {
+mkdir -p $GITCLONEDIR
+cd $GITCLONEDIR
+git clone -b $BRANCH $GITREPO
+cd $GITREPOROOT
+}
+# END git clone 
 
-echo "${bold}
-#Checking for DX and in case exists then check if it is version 1.8 used in fatrat (latest android sdk) 
-${normal}"
+# init submodules
+GITSBMDLINIT () {
+	git submodule init
+	git submodule update --recursive
+	sudo updatedb && sudo ldconfig
+}
+# END init submodules
 
-touch "$config"
-#Checking for DX and in case exists then check if it is version 1.8 used in fatrat (latest android sdk) 
+# chmod bin
+CHMODXEX1  () {
+chmod +x $GITREPOROOT/$EXECUTEABLE1
+}
+CHMODXEX2  () {
+chmod +x $GITREPOROOT/$EXECUTEABLE2
+}
+
+# symlink bin
+SYMLINKEX2TO1  () {
+sudo rm -f $BINDIR/$EXECUTEABLE2
+sudo ln -s $GITREPOROOT/$EXECUTEABLE1 $BINDIR/$EXECUTEABLE2
+}
+
+CPDESKTFL  () {
+mkdir -p $DSKTPFLSDEST
+rm -f $DSKTPFLSDEST/$DSKTPFL
+cp $DSKTPFLS/$DSKTPFL $DSKTPFLSDEST/$DSKTPFL
+}
+
+DEPS2 () {
+#################### BEGIN SETUP ####################
+
+touch "$CONFIG"
+
+# DX ################################################################################
+
+# DX PT 1 - START
 which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 dxg=`dx --version 2>&1 | tee temp/dx`
 dxv=`cat temp/dx | awk '{print $3}'` 
 case $dxv in
-1.8)
-#DX exists and it is version 1.8
+$DXVRSN)
 rm -rf temp/dx >/dev/null 2>&1
-which dx >> "$log" 2>&1
-echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.8"
-echo "DX -> OK" >> "$inst"
+which dx >> "$LOG" 2>&1
+echo "dx" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e  "${GREEN} ${bold}[ ✔ ] DX $DXVRSN ${normal}"
+echo "DX -> OK" >> "$INST"
+
 ;;
 *)
-#DX does not exists or is not 1.8 version
-# xterm -T "☣ Removing Your Current DX ☣" -geometry 100x30 -e "sudo apt-get remove --purge dx -y"
-sudo apt-get remove --purge dx -y
-unlink "/usr/local/sbin/dx" > /dev/null 2>&1
-sudo ln -s "$GITREPOROOT/tools/android-sdk/dx" "/usr/local/sbin/dx" > /dev/null 2>&1
-sudo udpatedb
-sudo which dx > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-which dx >> "$log" 2>&1
-echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.8"
-echo "DX -> OK" >> "$inst"
-else
-echo -e $red "[ x ] DX 1.8"
-echo "0" > "$stp"
-echo "DX -> Not OK" >> "$inst"
-fi
-;;
-esac
-else
-sudo unlink "/usr/local/sbin/dx" > /dev/null 2>&1
-sudo ln -s "$GITREPOROOT/tools/android-sdk/dx" "/usr/local/sbin/dx" > /dev/null 2>&1
+
+# DX PT 1 - END
+# DX PT 2 - START
+
+unlink "$SBIN/dx" > /dev/null 2>&1
+sudo ln -s "$GITREPOROOT/tools/android-sdk/dx" "$SBIN/dx" > /dev/null 2>&1
 sudo updatedb
 sudo which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-sudo which dx >> "$log" 2>&1
-echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.8"
-echo "DX -> OK" >> "$inst"
+which dx >> "$LOG" 2>&1
+echo "dx" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e "${GREEN} ${bold}[ ✔ ] DX $DXVRSN ${normal}"
+echo "DX -> OK" >> "$INST"
 else
-echo -e $red "[ x ] DX 1.8"
-echo "0" > "$stp"
-echo "DX -> Not OK" >> "$inst"
+echo -e  "${RED} ${bold}[ x ] DX $DXVRSN"
+echo "0" > "$STP"
+echo "DX -> Not OK" >> "$INST"
+fi
+
+;;
+esac
+
+# DX PT 2 - END
+# DX PT 3 - START
+
+else
+sudo unlink "$SBIN/dx" > /dev/null 2>&1
+sudo ln -s "$GITREPOROOT/tools/android-sdk/dx" "$SBIN/dx" > /dev/null 2>&1
+sudo updatedb
+sudo which dx > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+sudo which dx >> "$LOG" 2>&1
+echo "dx" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e "${GREEN} ${bold}[ ✔ ] DX $DXVRSN ${normal}"
+echo "DX -> OK" >> "$INST"
+else
+echo -e  "${RED} ${bold}[ x ] DX $DXVRSN ${normal}"
+echo "0" > "$STP"
+echo "DX -> Not OK" >> "$INST"
 fi
 fi
-echo "${bold}
-# check if aapt exists and if it is version v0.2-3821160 used in fatrat (android sdk)
-${normal}"
-# check if aapt exists and if it is version v0.2-3821160 used in fatrat (android sdk)
+
+# DX PT 3 - END
+# DX - END
+################################################################################
+# AAPT SETUP CHECK & INSTALL
+# AAPT PT 1 - START
+
 sudo which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 aptv=`aapt v | awk '{print $5}'`
 case $aptv in
-v0.2-3821160)
-#exists and it is v0.2-3821160
-sudo which aapt >> "$log" 2>&1
-echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3821160"
-echo "Aapt -> OK" >> "$inst"
+$AAPTVRSN)
+sudo which aapt >> "$LOG" 2>&1
+echo "aapt" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e "${GREEN} ${bold} [ ✔ ] Aapt $AAPTVRSN ${normal}"
+echo "Aapt -> OK" >> "$INST"
+
 ;;
 *)
-#Aapt does not exists or is not the latest version used in fatrat (android sdk)
-#xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y"
-sudo apt-get remove --purge aapt -y
-sudo unlink "/usr/local/sbin/aapt" > /dev/null 2>&1
-sudo ln -s "$GITREPOROOT/tools/android-sdk/aapt" "/usr/local/sbin/aapt" > /dev/null 2>&1
+
+# AAPT PT 1 - END
+# AAPT PT 2 - START
+
+sudo unlink "$SBIN/aapt" > /dev/null 2>&1
+sudo ln -s "$GITREPOROOT/tools/android-sdk/aapt" "$SBIN/aapt" > /dev/null 2>&1
 sudo updatedb
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-which aapt >> "$log" 2>&1
-echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3821160"
-echo "Aapt -> OK" >> "$inst"
+which aapt >> "$LOG" 2>&1
+echo "aapt" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e "${GREEN} ${bold}[ ✔ ] Aapt $AAPTVRSN ${normal}"
+echo "Aapt -> OK" >> "$INST"
 else
-echo -e $red "[ x ] Aapt v0.2-3821160"
-echo "0" > "$stp"
-echo "Aapt -> Not OK" >> "$inst"
+echo -e  "${RED} ${bold}[ x ] Aapt $AAPTVRSN ${normal}"
+echo "0" > "$STP"
+echo "Aapt -> Not OK" >> "$INST"
 fi
+
 ;;
 esac
+
+# AAPT PT 2 - END
+# AAPT PT 3 - START
+
 else
-sudo unlink "/usr/local/sbin/aapt" > /dev/null 2>&1
-sudo ln -s "$GITREPOROOT/tools/android-sdk/aapt" "/usr/local/sbin/aapt" > /dev/null 2>&1
+sudo unlink "$SBIN/aapt" > /dev/null 2>&1
+sudo ln -s "$GITREPOROOT/tools/android-sdk/aapt" "$SBIN/aapt" > /dev/null 2>&1
 sudo updatedb
 sudo which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-sudo which aapt >> "$log" 2>&1
-echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3821160"
-echo "Aapt -> OK" >> "$inst"
+sudo which aapt >> "$LOG" 2>&1
+echo "aapt" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e "${GREEN} ${bold}[ ✔ ] Aapt $AAPTVRSN ${normal}"
+echo "Aapt -> OK" >> "$INST"
 else
-echo -e $red "[ x ] Aapt v0.2-3821160"
-echo "0" > "$stp"
-echo "Aapt -> Not OK" >> "$inst"
+echo -e  "${RED} ${bold}[ x ] Aapt $AAPTVRSN ${normal}"
+echo "0" > "$STP"
+echo "Aapt -> Not OK" >> "$INST"
 fi
 fi
 
-echo "${bold}
-#Same procedure used for dx and aapt , but for apktool 2.2.2.
-${normal}"
-#Same procedure used for dx and aapt , but for apktool 2.2.2.
+# AAPT PT 3 - END
+# END AAPT
+################################################################################
+# APKTOOL
+# APKTOOL PT 1 - START
+
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 apk=`apktool | sed -n 1p | awk '{print $2}'` > /dev/null 2>&1
 case $apk in 
-v.2.2.2)
-which apktool >> "$log" 2>&1
-echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Apktool v.2.2.2"
-echo "Apktool -> OK" >> "$inst"
+$APKTOOLVRSN)
+which apktool >> "$LOG" 2>&1
+echo "apktool" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e "${GREEN} ${bold} [ ✔ ] Apktool $APKTOOLVRSN ${normal}"
+echo "Apktool -> OK" >> "$INST"
+
 ;;
 *)
-#xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
-sudo apt-get remove --purge apktool -y
-sudo unlink "/usr/local/sbin/apktool" > /dev/null 2>&1
-sudo ln -s "$GITREPOROOT/tools/apktool2.2.2/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
+
+# APKTOOL PT 1 - END
+# APKTOOL PT 2 - START
+
+sudo unlink "$SBIN/apktool" > /dev/null 2>&1
+sudo ln -s "$GITREPOROOT/tools/apktool2.2.2/apktool" "$SBIN/apktool" > /dev/null 2>&1
 sudo updatedb
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Apktool v.2.2.2"
-which apktool >> "$log" 2>&1
-echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo "Apktool -> OK" >> "$inst"
+echo -e "${GREEN} ${bold}[ ✔ ] Apktool $APKTOOLVRSN ${normal}"
+which apktool >> "$LOG" 2>&1
+echo "apktool" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo "Apktool -> OK" >> "$INST"
 else
-echo -e $red "[ x ] Apktool v.2.2.2"
-echo "0" > "$stp"
-echo "Apktool -> Not OK" >> "$inst"
+echo -e  "${RED} ${bold}[ x ] Apktool $APKTOOLVRSN ${normal}"
+echo "0" > "$STP"
+echo "Apktool -> Not OK" >> "$INST"
 fi
+
 ;;
 esac
+
+# APKTOOL PT 2 - END
+# APKTOOL PT 3 - START
+
 else
-sudo unlink "/usr/local/sbin/apktool" > /dev/null 2>&1
-sudo ln -s "$GITREPOROOT/tools/apktool2.2.2/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
+sudo unlink "$SBIN/apktool" > /dev/null 2>&1
+sudo ln -s "$GITREPOROOT/tools/apktool2.2.2/apktool" "$SBIN/apktool" > /dev/null 2>&1
 sudo updatedb
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-which apktool >> "$log" 2>&1
-echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Apktool v.2.2.2"
-echo "Apktool -> OK" >> "$inst"
+which apktool >> "$LOG" 2>&1
+echo "apktool" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e "${GREEN} ${bold}[ ✔ ] Apktool $APKTOOLVRSN ${normal}"
+echo "Apktool -> OK" >> "$INST"
 else
-echo -e $red "[ x ] Apktool v.2.2.2"
-echo "0" > "$stp"
-echo "Apktool -> Not OK" >> "$inst"
+echo -e  "${RED} ${bold}[ x ] Apktool $APKTOOLVRSN ${normal}"
+echo "0" > "$STP"
+echo "Apktool -> Not OK" >> "$INST"
 fi
 fi
 
-echo "${bold}
-#Same as others before , but dex2jar in this case will be installed directly to user OS , instead be working in fatrat tools
-${normal}"
+# APKTOOL PT 3 - END
+# APKTOOL END
+################################################################################
+# DEX2JAR
+# DEX2JAR PT 1
 
-#Same as others before , but dex2jar in this case will be installed directly to user OS , instead be working in fatrat tools
 which d2j-dex2jar > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 dex=`d2j-dex2jar 2>&1 | tee temp/dex`
 d2j=`cat temp/dex | sed -n 19p | awk '{print $2}' | cut -f1 -d','`
 case $d2j in
-reader-2.0)
+reader-$DEX2JARVRSN)
 rm -rf temp/dex >/dev/null 2>&1
-which d2j-dex2jar >> "$log" 2>&1
-echo "d2j-dex2jar" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Dex2Jar 2.0"
-echo "Dex2Jar -> OK" >> "$inst"
+which d2j-dex2jar >> "$LOG" 2>&1
+echo "d2j-dex2jar" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo -e "${GREEN} ${bold}[ ✔ ] Dex2Jar $DEX2JARVRSN ${normal}"
+echo "Dex2Jar -> OK" >> "$INST"
+
 ;;
 *)
+
+# DEX2JAR PT 1 - END
+# DEX2JAR PT 2 - START
 rm -rf temp/dex >/dev/null 2>&1
-#Dex2jar does not exists or it is not the 2.0 version , so uninstall it & copy dex2jar from
-#fatrat tools folder to /usr/local/sbin
-sudo sudo apt-get remove --purge dex2jar --force-yes -y
-sudo cp $GITREPOROOT/tools/dex2jar/* /usr/local/sbin/ > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-baksmali > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-dex-recompute-checksum > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-dex2jar > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-dex2smali > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-jar2dex > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-jar2jasmin > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-jasmin2jar > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-smali > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-std-apk > /dev/null 2>&1
-# remove any previous version files from dex2jar lib from /usr/local/share
-# and copy the new ones to there from fatrat tools dir
+sudo cp $GITREPOROOT/tools/dex2jar/* $SBIN/ > /dev/null 2>&1
+chmod +x $SBIN/d2j-baksmali > /dev/null 2>&1
+chmod +x $SBIN/d2j-dex-recompute-checksum > /dev/null 2>&1
+chmod +x $SBIN/d2j-dex2jar > /dev/null 2>&1
+chmod +x $SBIN/d2j-dex2smali > /dev/null 2>&1
+chmod +x $SBIN/d2j-jar2dex > /dev/null 2>&1
+chmod +x $SBIN/d2j-jar2jasmin > /dev/null 2>&1
+chmod +x $SBIN/d2j-jasmin2jar > /dev/null 2>&1
+chmod +x $SBIN/d2j-smali > /dev/null 2>&1
+chmod +x $SBIN/d2j-std-apk > /dev/null 2>&1
 sudo rm -rf /usr/local/share/dex2jar > /dev/null 2>&1
 sudo mkdir /usr/local/share/dex2jar > /dev/null 2>&1
 sudo cp -r $GITREPOROOT/tools/dex2jar/lib /usr/local/share/dex2jar/lib > /dev/null 2>&1
+
+
 which d2j-dex2jar > /dev/null 2>&1
-#After new instalation , check if dex2jar is working
 if [ "$?" -eq "0" ]; then
-#Dex2jar was suceffully installed
-echo -e $green "[ ✔ ] Dex2Jar 2.0"
-which d2j-dex2jar >> "$log" 2>&1
-echo "d2j-dex2jar" | tee -a "$config" >> /dev/null 2>&1
-echo "Dex2Jar -> OK" >> "$inst"
+echo -e "${GREEN} ${bold} [ ✔ ] Dex2Jar $DEX2JARVRSN ${normal}"
+which d2j-dex2jar >> "$LOG" 2>&1
+echo "d2j-dex2jar" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo "Dex2Jar -> OK" >> "$INST"
 else
-#After the instalation something did not worked , place the warnings in logs
-echo -e $red "[ x ] Dex2Jar 2.0"
-echo "0" > "$stp"
-echo "Dex2Jar -> Not OK" >> "$inst"
+echo -e  "${RED} ${bold}[ x ] Dex2Jar $DEX2JARVRSN ${normal}"
+echo "0" > "$STP"
+echo "Dex2Jar -> Not OK" >> "$INST"
 fi
+
 ;;
 esac
+
+# DEX2JAR PT 2 - END
+# DEX2JAR PT 3 - START
+
 else
-#dex2jar does not exist in user linux OS , proceed with a clean manual installation
-sudo cp $GITREPOROOT/tools/dex2jar/* /usr/local/sbin/ > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-baksmali > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-dex-recompute-checksum > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-dex2jar > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-dex2smali > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-jar2dex > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-jar2jasmin > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-jasmin2jar > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-smali > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-std-apk > /dev/null 2>&1
+
+sudo cp $GITREPOROOT/tools/dex2jar/* $SBIN/ > /dev/null 2>&1
+sudo chmod +x $SBIN/d2j-baksmali > /dev/null 2>&1
+sudo chmod +x $SBIN/d2j-dex-recompute-checksum > /dev/null 2>&1
+sudo chmod +x $SBIN/d2j-dex2jar > /dev/null 2>&1
+sudo chmod +x $SBIN/d2j-dex2smali > /dev/null 2>&1
+sudo chmod +x $SBIN/d2j-jar2dex > /dev/null 2>&1
+sudo chmod +x $SBIN/d2j-jar2jasmin > /dev/null 2>&1
+sudo chmod +x $SBIN/d2j-jasmin2jar > /dev/null 2>&1
+sudo chmod +x $SBIN/d2j-smali > /dev/null 2>&1
+sudo chmod +x $SBIN/d2j-std-apk > /dev/null 2>&1
 sudo rm -rf /usr/local/share/dex2jar > /dev/null 2>&1
 sudo mkdir /usr/local/share/dex2jar > /dev/null 2>&1
 sudo cp -r $GITREPOROOT/tools/dex2jar/lib /usr/local/share/dex2jar/lib > /dev/null 2>&1
+
 which d2j-dex2jar > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Dex2Jar 2.0"
-which d2j-dex2jar >> "$log" 2>&1
-echo "d2j-dex2jar" | tee -a "$config" >> /dev/null 2>&1
-echo "Dex2Jar -> OK" >> "$inst"
+echo -e "${GREEN} ${bold} [ ✔ ] Dex2Jar $DEX2JARVRSN ${normal}"
+which d2j-dex2jar >> "$LOG" 2>&1
+echo "d2j-dex2jar" | tee -a "$CONFIG" >> /dev/null 2>&1
+echo "Dex2Jar -> OK" >> "$INST"
 else
-echo -e $red "[ x ] Dex2Jar 2.0"
-echo "0" > "$stp"
-echo "Dex2Jar -> Not OK" >> "$inst"
+echo -e  "${RED} ${bold} [ x ] Dex2Jar $DEX2JARVRSN ${normal}"
+echo "0" > "$STP"
+echo "Dex2Jar -> Not OK" >> "$INST"
 fi
 fi
 
+# DEX2JAR PT 3 - END
+# DEX2JAR END
+################################################################################
+
+}
+
+BANNER # welcome banner
+
+echo -e " ${bold} ... install apt-get deps ${normal}"
+INSTDEPS
+REMVUNWNTD # remove unwanted apt-get ppa
+
+echo -e " ${bold} ... git clone && submodule init ${normal}"
 GITCLONEFUNC
-echo "${bold}
-mkdir and cp desktop file       
-${normal}"
-#333d 
-CPDESKTFL
+GITSBMDLINIT
 
+echo -e " ${bold} ... chmod +x bins ${normal}"
+CHMODX1
+
+echo -e " ${bold} ... create .sh file to run fatrat by symlink${normal}"
+CREATEEXEC 
+
+echo -e " ${bold} ... chmod +x bins ${normal}"
+CHMODXEX2 # chmod +x
+CHMODXEX1 # chmod +x
+
+echo -e " ${bold} ... symlink${normal}"
+SYMLINKEX2TO1
+
+echo -e " ${bold} ... symlink setup${normal}"
+CUSTOMLINK # customize this
+
+echo -e " ${bold} ... deps: DX, AAPT, APKTOOL & DEX2JAR${normal}"
+DEPS2
+
+echo -e " ${bold} ... cp .desktop files${normal}"
+CPDESKTFL 
+
+echo -e " $YELLOW ${bold} COMPLETE :)${normal}"
