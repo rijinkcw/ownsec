@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Synaptic Package Manager
+Comment=Install, remove and upgrade software packages
+Exec=synaptic-pkexec
+Icon=synaptic
+Path=
+Terminal=false
+StartupNotify=false
