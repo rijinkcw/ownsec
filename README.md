@@ -1,3 +1,5 @@
+## ownsec for xUbuntu 18.04 - 
+> STATUS - mostly untested 06.05.2018, xfce4 panel setup has been fixed, installscripts untested yet - maybe broken apt-get deps bec of 16.04 -> 18.04 upgrades/changes
 
 #### 1. What is this?
 - Install lots of IT-Sec related apps with dependencies
