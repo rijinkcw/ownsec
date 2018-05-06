@@ -1,6 +1,6 @@
 ## PREQUISITES
 
-- Xubuntu 16.04 
+- Xubuntu 18.04 
 
 > aprox 2 hours of time with 11mbit dl i5 netbook w ssd - apt-get lists, node, openvas (the sync is very slow), wireshark and ruby on rbenv need decent time to dl/build/install.
 
@@ -8,7 +8,7 @@
 
 #### Install routine:
 
-- Part1 Update & Upgrade a blanc 16.04 xubuntu - reboot
+- Part1 Update & Upgrade a blanc 18.04 xubuntu - reboot
 - Part2 Install dependencies and base apps, setup user env. - may reboot
 - Part3 Install the apps from the main folder categories
 
