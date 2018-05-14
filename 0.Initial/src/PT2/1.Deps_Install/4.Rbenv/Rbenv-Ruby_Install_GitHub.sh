@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BRANCH=xenial
+BRANCH=18.04-bionic_beaver
 GITREPO=git://github.com/alphaaurigae/rbenv-ruby_install.git
 GITREPOROOT=/opt/ownsec/0.Initial/src/PT2/1.Deps_Install/4.Rbenv/rbenv-ruby_install
 GITCLONEDIR=/opt/ownsec/0.Initial/src/PT2/1.Deps_Install/4.Rbenv
