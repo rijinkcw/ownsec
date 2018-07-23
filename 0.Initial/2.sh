@@ -87,11 +87,11 @@ echo "${bold}
 ${normal}"
 ./5.GO-gophers-apt-Install.sh
 source ~/.bashrc
-#### [INCOMPLETE] Mysql - PHPmyadmin Install
-#echo "${bold}
-#./6.Mysql-PHPmyadmin_Install.sh
-#${normal}"
-#./6.Mysql-PHPmyadmin_Install.sh
+
+echo "${bold}
+./6.Update-GCC-G++_alternatives.sh
+${normal}"
+./6.Update-GCC-G++_alternatives.sh
 
 #### Setup PSQL Metasploit-Framework Database
 # moved to part3

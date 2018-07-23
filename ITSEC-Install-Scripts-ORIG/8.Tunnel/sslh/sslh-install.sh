@@ -19,32 +19,63 @@ echo "${bold}
 \___ \___ \| |   | |_| |
  ___) |__) | |___|  _  |
 |____/____/|_____|_| |_|
-            
+
 INSTALL
 ${normal}"
 
-#plh11
-GITCLONEFUNC
+SET_ALTERNATIVES () {
+# set default version ( 4 = gcc 7)
+yes "1" | sudo update-alternatives --config gcc 
+expect "Press <enter> to keep the current choice[*], or type selection number:" { send "\n" }
+yes "1" | sudo update-alternatives --config g++ 
+expect "Press <enter> to keep the current choice[*], or type selection number:" { send "\n" }
+gcc -v
+g++ -v
+}
 
-### DEPS:
+REVERT_ALTERNATIVES () {
+# revert default version ( 4 = gcc 7)
+yes "4" | sudo update-alternatives --config gcc 
+expect "Press <enter> to keep the current choice[*], or type selection number:" { send "\n" }
+yes "4" | sudo update-alternatives --config g++ 
+expect "Press <enter> to keep the current choice[*], or type selection number:" { send "\n" }
+gcc -v
+g++ -v
+}
+
+INSTDEPS () {
+LIBS_DEPS="libwrap0-dev 
+libconfig-dev
+libconfig++-dev"
 
 sudo apt-get update
 sudo apt-get upgrade
-xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-sslh.txt") -r -- sudo apt-get install -y
 
-sudo -H pip2 install virtualenvwrapper
+echo $LIBS_DEPS | while read libsdeps
+do
+   sudo apt-get install -y $libsdeps
+done
+
+#sudo -H pip2 uninstall virtualenvwrapper
 sudo ldconfig
 sudo updatedb
  
-sudo -H pip2 install -r requirements.txt
-sudo ldconfig
+# sudo -H pip2 install -r requirements.txt
 sudo updatedb
-### DEPS END
-make clean
-GITSBMDLINIT
+sudo ldconfig
+}
 
+INSTDEPS
+GITCLONEFUNC
+GITSBMDLINIT
+make clean
+
+SET_ALTERNATIVES
 make -j 4
+
+
 sudo make install
+REVERT_ALTERNATIVES
 #333d
 CPDESKTFL
 
