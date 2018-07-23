@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BRANCH=xenial
+BRANCH=18.04-bionic_beaver
 GITREPO=git://github.com/alphaaurigae/virtualbox_ppa-install.git
 GITREPOROOT=/opt/ownsec/0.Initial/src/PT2/3.UsrApp_Install/virtualbox_ppa-install
 GITCLONEDIR=/opt/ownsec/0.Initial/src/PT2/3.UsrApp_Install

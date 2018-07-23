@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BRANCH=xenial
+BRANCH=18.04-bionic_beaver
 GITREPO=git://github.com/alphaaurigae/tor_ppa-install.git
 GITREPOROOT=/opt/ownsec/0.Initial/src/PT2/3.UsrApp_Install/tor_ppa-install
 GITCLONEDIR=/opt/ownsec/0.Initial/src/PT2/3.UsrApp_Install
