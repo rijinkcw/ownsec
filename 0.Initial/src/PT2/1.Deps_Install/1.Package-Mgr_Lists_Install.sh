@@ -25,7 +25,7 @@ sudo apt-get update
 sudo apt-get upgrade
 xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/essential.txt") -r -- sudo apt-get install -y
 xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/itsec-tools.txt") -r -- sudo apt-get install -y
-xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/main/remove-initial.txt") -r -- sudo apt-get purge --remove -y
+xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/remove-initial.txt") -r -- sudo apt-get purge --remove -y
 
 # Disable services
 
