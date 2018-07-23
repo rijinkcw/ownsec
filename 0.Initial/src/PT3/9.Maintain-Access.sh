@@ -10,7 +10,7 @@ cd $BASEDIR/1.OS-Backdoors/0.MultiOS-Backdoor/phantom-evasion
 cd $BASEDIR/1.OS-Backdoors/0.MultiOS-Backdoor/pupy
 ./pupy-install.sh
 cd $BASEDIR/1.OS-Backdoors/0.MultiOS-Backdoor/the-backdoor-factory
-./the-backdoor-factory-install.sh 
+./the-backdoor-factory_install.sh
 cd $BASEDIR/1.OS-Backdoors/0.MultiOS-Backdoor/thefatrat
 ./thefatrat-install.sh #appears to work - check again - on 2nd test [ x ] Aapt v0.2-3821160 
 cd $BASEDIR/1.OS-Backdoors/0.MultiOS-Backdoor/pupy
