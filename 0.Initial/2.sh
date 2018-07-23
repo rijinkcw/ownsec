@@ -48,11 +48,6 @@ ${normal}"
 #${normal}"
 #./2.Node-Npm_Install_GitHub.sh
 
-echo "${bold}
-cd /opt/ownsec/0.Initial/src/PT2/1.Deps_Install
-${normal}"
-cd $DEPS_INST/2.NVM
-
 #### Install Node & NPM w NVM off Github
 echo "${bold}
 ./2.NVM_Install_GitHub.sh
@@ -85,10 +80,6 @@ ${normal}"
 ./4.Rbenv-Ruby_Install_GitHub.sh
 source ~/.bashrc
 
-echo "${bold}
-cd /opt/ownsec/0.Initial/src/PT2/1.Deps_Install    
-${normal}"
-cd $DEPS_INST
 
 #### Install GO from off ppa:gophers/archive
 echo "${bold}
