@@ -3,7 +3,7 @@
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 
 GITREPO=https://github.com/alphaaurigae/metasploit-framework_install
-BRANCH=xenial
+BRANCH=18.04-bionic_beaver
 GITREPOROOT=/opt/ownsec/ITSEC-Install-Scripts-ORIG/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/thefatrat/thefatrat_install
 GITCLONEDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/thefatrat
 

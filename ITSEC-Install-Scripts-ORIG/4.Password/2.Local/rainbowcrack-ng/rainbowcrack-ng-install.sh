@@ -33,13 +33,6 @@ echo "${bold}
 INSTALL
 ${normal}"
 
-#plh11
-cd $GITREPOBINDIR
-make uninstall
-make clean
-
-GITCLONEFUNC
-
 ### DEPS:
 
 sudo apt-get update
@@ -47,6 +40,7 @@ sudo apt-get upgrade
 xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-rainbowcrack-ng.txt") -r -- sudo apt-get install -y
 ### DEPS END
 
+GITCLONEFUNC
 GITSBMDLINIT
 cd $GITREPOBINDIR
 #

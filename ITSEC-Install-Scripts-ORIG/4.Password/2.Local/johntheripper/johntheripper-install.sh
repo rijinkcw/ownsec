@@ -28,28 +28,51 @@ INSTALL
 ${normal}"
 
 #plh11
-GITCLONEFUNC
-cd src
-sudo make uninstall
-make clean
-GITCLONEFUNC
+
 
 ### DEPS:
+INSTDEPS () {
+
+LIBS_DEPS="libgmp-dev 
+libpcap-dev
+libbz2-dev 
+libopenmpi-dev 
+libicu-dev"
+
+MAIN_DEPS="pkg-config
+ocl-icd-opencl-dev
+yasm
+openmpi-bin
+cmake
+bison
+flex"
+
 
 sudo apt-get update
 sudo apt-get upgrade
-xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-johntheripper.txt") -r -- sudo apt-get install -y
-### DEPS END
 
+echo $LIBS_DEPS | while read libsdeps
+do
+   sudo apt-get install -y $libsdeps
+done
+
+echo $MAIN_DEPS | while read maindeps
+do
+   sudo apt-get install -y $maindeps
+done
+
+}
+INSTDEPS
+### DEPS END
+GITCLONEFUNC
 GITSBMDLINIT
 
-cd src
 
 git clone --recursive https://github.com/teeshop/rexgen.git
 cd rexgen
 GITSBMDLINIT
 sudo ./install.sh
-GITCLONEFUNC
+cd $GITREPOROOT
 cd src
 
 ./configure --enable-mpi
