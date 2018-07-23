@@ -1,2 +1,6 @@
 gnome-sudoku 
 gnome-mines
+ruby
+rake
+vim-addon-manager
+vim-asciidoc

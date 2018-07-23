@@ -12,15 +12,10 @@ catfish
 cmake
 conky-all
 curl
-connect-proxy
-crunch
-darkstat
-dhcpdump
 dh-make
 dkms
 dnswalk
 dos2unix
-driftnet
 equivs
 ethtool
 expect
@@ -35,7 +30,6 @@ fonts-hack-ttf
 fonts-hack-web
 gparted
 gufw
-httrack
 htop
 iputils-clockdiff
 iputils-arping
@@ -49,7 +43,6 @@ lsb-release
 lynx
 macchanger
 mcrypt
-mitmproxy
 ndiff
 netmask
 ntp

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -i
 
 BRANCH=18.04-bionic_beaver
 GITREPO=git://github.com/alphaaurigae/rbenv-ruby_install.git
