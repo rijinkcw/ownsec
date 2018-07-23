@@ -22,15 +22,29 @@ echo "${bold}
   | | | |_| | / _ \ |  \| | | | \___ \ 
   | | |  _  |/ ___ \| |\  | |_| |___) |
   |_| |_| |_/_/   \_\_| \_|\___/|____/ 
-        
+
+INSTALL
 ${normal}"
 
-#plh11
-GITCLONEFUNC
+INSTDEPS () {
 
-### DEPS:
-# no deps noted, feel free to add
-### DEPS END
+LIBS_DEPS="libsqlite3-0
+libsqlite3-dev"
+
+sudo apt-get update
+sudo apt-get upgrade
+
+echo $LIBS_DEPS | while read libsdeps
+do
+   sudo apt-get install -y $libsdeps
+done
+
+sudo updatedb
+sudo ldconfig
+}
+
+INSTDEPS
+GITCLONEFUNC
 
 #make clean
 GITSBMDLINIT
