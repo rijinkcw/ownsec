@@ -49,7 +49,7 @@ ${normal}"
 #./2.Node-Npm_Install_GitHub.sh
 
 echo "${bold}
-cd /opt/ownsec/0.Initial/src/PT2/1.Deps_Install/2.NVM
+cd /opt/ownsec/0.Initial/src/PT2/1.Deps_Install
 ${normal}"
 cd $DEPS_INST/2.NVM
 
@@ -77,10 +77,6 @@ ${normal}"
 #${normal}"
 #./3.Java-JDK-JRE_Install.sh
 
-echo "${bold}
-cd /opt/ownsec/0.Initial/src/PT2/1.Deps_Install/4.Rbenv
-${normal}"
-cd $DEPS_INST/4.Rbenv
 
 #### Install Rbenv for Ruby off Github
 echo "${bold}
