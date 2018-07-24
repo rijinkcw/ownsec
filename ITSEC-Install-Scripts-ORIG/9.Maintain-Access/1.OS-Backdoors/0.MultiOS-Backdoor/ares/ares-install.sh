@@ -24,7 +24,7 @@ INSTALL
 ${normal}"
 
 #plh11
-GITCLONEFUNC
+
 
 ### DEPS:
 sudo apt-get update
@@ -37,6 +37,7 @@ sudo apt-get upgrade
 xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-ares.txt") -r -- sudo apt-get install -y
 ### DEPS END
 
+GITCLONEFUNC
 GITSBMDLINIT
 ####### SERVER
 
@@ -50,7 +51,7 @@ cd ..
 sudo python setup.py install
 cd ..
 
-GITCLONEFUNC 
+ 
 
 #git clone https://github.com/naihe2010/pyHook
 #cd pyHook
@@ -63,18 +64,15 @@ GITCLONEFUNC
 #cd ..
 #
 
-
-GITCLONEFUNC 
+ 
 
 #vim agent/python/settings.py
-
-GITCLONEFUNC 
-cd server
+ 
+# cd server
 #python db_init.py #init
 
-
-GITCLONEFUNC 
-cd server 
+ 
+# cd server 
 #rm -f server.sh
 #echo "#!/usr/bin/env bash
 
@@ -89,6 +87,5 @@ cd server
 #cd agent/python
 #pyinstaller --onefile agent.py
 
-GITCLONEFUNC 
 
 #333d && CPDESKTFL
