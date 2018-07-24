@@ -4,7 +4,7 @@ bold=$(tput bold)
 normal=$(tput sgr0)
 
 APTLSTDIR=/opt/ownsec/0.Initial/lst/apt
-
+PIP2LSTDIR=/opt/ownsec/0.Initial/lst/pip
 APPSAPTLSTDIR=/opt/ownsec/0.Initial/src/PT2/3.UsrApp_Install
 WIFIAPTLSTDIR=/opt/ownsec/0.Initial/src/PT2/2.Firmware_Install/1.Wifi
 
@@ -27,6 +27,7 @@ xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/essential.txt") -r -- sudo apt-get insta
 xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/itsec-tools.txt") -r -- sudo apt-get install -y
 xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/remove-initial.txt") -r -- sudo apt-get purge --remove -y
 
+xargs -a <(awk '/^\s*[^#]/' "$PIP2LSTDIR/essential_pip2.txt") -r -- sudo -H pip2 install
 # Disable services
 
 sudo service cups stop
@@ -48,7 +49,6 @@ sudo apt-get autoremove -y
 sudo apt-get install -y linux-image-extra-$(uname -r) 
 #sudo apt-get install -y linux-image-extra-virtual-$(uname -r)
 
-sudo easy_install -U pip
 
 sudo updatedb
 sudo ldconfig

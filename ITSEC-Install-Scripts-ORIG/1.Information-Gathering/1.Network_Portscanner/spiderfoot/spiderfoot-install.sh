@@ -33,8 +33,10 @@ ${normal}"
 GITCLONEFUNC
 
 ### DEPS:
-# No apt deps, installing pip deps manually wo requirements.txt
-sudo -H pip2 install lxml netaddr M2Crypto cherrypy mako requests bs4
+sudo apt-get install -y swig
+pur -r requirements.txt
+# sudo -H pip2 install lxml netaddr M2Crypto CherryPy Mako requests bs4 beautifulsoup4
+sudo -H pip2 install -r requirements.txt
 ### DEPS END
 
 make clean
