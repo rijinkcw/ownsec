@@ -24,22 +24,37 @@ INSTALL
 ${normal}"
 
 #plh11
+
+SET_ALTERNATIVES () {
+# set default version ( 4 = gcc 7)
+yes "1" | sudo update-alternatives --config gcc 
+expect "Press <enter> to keep the current choice[*], or type selection number:" { send "\n" }
+yes "1" | sudo update-alternatives --config g++ 
+expect "Press <enter> to keep the current choice[*], or type selection number:" { send "\n" }
+gcc -v
+g++ -v
+}
+
+REVERT_ALTERNATIVES () {
+# revert default version ( 4 = gcc 7)
+yes "4" | sudo update-alternatives --config gcc 
+expect "Press <enter> to keep the current choice[*], or type selection number:" { send "\n" }
+yes "4" | sudo update-alternatives --config g++ 
+expect "Press <enter> to keep the current choice[*], or type selection number:" { send "\n" }
+gcc -v
+g++ -v
+}
+
+# deps ?
+
 GITCLONEFUNC
-
-### DEPS:
-
-sudo apt-get update
-sudo apt-get upgrade
-xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-thc-pptp-bruter.txt") -r -- sudo apt-get install -y
-
-### DEPS END
-
 make clean
 GITSBMDLINIT
-
+SET_ALTERNATIVES
 ./bootstrap
 ./configure
 make -j 4
 sudo make install
+REVERT_ALTERNATIVES
 #333d
 CPDESKTFL
