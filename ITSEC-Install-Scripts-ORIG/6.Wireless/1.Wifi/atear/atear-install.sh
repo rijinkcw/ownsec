@@ -35,6 +35,7 @@ sudo apt-get update
 sudo apt-get upgrade
 xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-atear.txt") -r -- sudo apt-get install -y
 
+pur -r requirements.txt
 sudo -H pip2 install -r requirements.txt
 sudo updatedb
 sudo ldconfig
@@ -43,7 +44,7 @@ sudo ldconfig
 
 GITSBMDLINIT
 
-rm -f $EXECUTEABLE3
+rm -f $EXECUTEABLE1
 echo "#!/bin/bash 
 
 cd /opt/ownsec/ITSEC/6.Wireless/1.Wifi/atear/NORMA-Inc/AtEar 

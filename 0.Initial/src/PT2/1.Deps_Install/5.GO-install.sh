@@ -1,10 +1,10 @@
 #!/bin/bash -i
 
 BRANCH=18.04-bionic_beaver
-GITREPO=git://github.com/alphaaurigae/go_gophersPPA-install.git
-GITREPOROOT=/opt/ownsec/0.Initial/src/PT2/1.Deps_Install/4.Rbenv/go_gophersPPA-install
-GITCLONEDIR=/opt/ownsec/0.Initial/src/PT2/1.Deps_Install/4.Rbenv
-EXEC1=Rbenv-Ruby_Install_GitHub.sh
+GITREPO=git://github.com/alphaaurigae/go-install.git
+GITREPOROOT=/opt/DEPS/go-install
+GITCLONEDIR=/opt/DEPS
+EXEC1=go-apt-install.sh
 
 mkdir -p $GITCLONEDIR
 cd $GITCLONEDIR

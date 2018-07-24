@@ -24,16 +24,16 @@ cd $BASEDIR/2.Local/johnny
 ./johnny-install.sh
 cd $BASEDIR/2.Local/johntheripper
 ./johntheripper-install.sh
-cd $BASEDIR/2.Local/ophcrack
-./ophcrack-install.sh
+# cd $BASEDIR/2.Local/ophcrack # build fail, ssl probably
+# ./ophcrack-install.sh
 cd $BASEDIR/2.Local/pack
 ./pack-install.sh 
 cd $BASEDIR/2.Local/pyrit
 ./pyrit-install.sh 
 #cd $BASEDIR/2.Local
 #./hashid-install.sh # empty output if no option def# building works #make: *** No rule to make target 'install'.  Stop.
-cd $BASEDIR/2.Local/rainbowcrack-ng
-./rainbowcrack-ng-install.sh 
+# cd $BASEDIR/2.Local/rainbowcrack-ng # build fail, ssl probably
+# ./rainbowcrack-ng-install.sh 
 
 ###############################################################################
 ######################   1.NET   ####################

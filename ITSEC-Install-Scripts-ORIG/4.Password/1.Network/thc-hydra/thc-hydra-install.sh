@@ -24,17 +24,13 @@ echo "${bold}
 INSTALL
 ${normal}"
 
-#plh11
-GITCLONEFUNC
-
-### DEPS:
-
 sudo apt-get update
 sudo apt-get upgrade
 xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-thc-hydra.txt") -r -- sudo apt-get install -y
 
 ### DEPS END
 
+GITCLONEFUNC
 make clean
 GITSBMDLINIT
 

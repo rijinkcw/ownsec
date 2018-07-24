@@ -83,9 +83,9 @@ source ~/.bashrc
 
 #### Install GO from off ppa:gophers/archive
 echo "${bold}
-./5.GO-gophers-apt-Install.sh
+./5.GO-install.sh
 ${normal}"
-./5.GO-gophers-apt-Install.sh
+./5.GO-install.sh
 source ~/.bashrc
 
 echo "${bold}

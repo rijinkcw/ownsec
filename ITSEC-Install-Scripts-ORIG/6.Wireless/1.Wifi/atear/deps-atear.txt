@@ -1,3 +1,9 @@
 python-pyodbc 
 python-paramiko 
 python-psycopg2 
+tshark
+hostapd
+python-dev
+python-pip
+python-pyodbc
+

@@ -44,8 +44,8 @@ cd $BASEDIR/1.Wifi/3.Jammer/wifijammer
 
 # didnt look much into it yet, needs more work mst probly.
 #./#hostapd-mana-install.sh 
-cd $BASEDIR/1.Wifi/4.Evil-Twin/hostapd-wpe
-./hostapd-wpe-install.sh
+# cd $BASEDIR/1.Wifi/4.Evil-Twin/hostapd-wpe # build fail, ssl?
+# ./hostapd-wpe-install.sh
 #######################################################
 ######################   1.Wifi MAIN   ###############
 #####################################################

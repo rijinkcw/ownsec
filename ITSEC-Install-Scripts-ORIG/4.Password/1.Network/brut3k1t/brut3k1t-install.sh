@@ -38,16 +38,13 @@ xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-brut3k1t.txt") -r -- sudo apt-get i
 sudo -H pip2 install asn1crypto
 sudo updatedb
 sudo ldconfig
-sudo -H pip2 install -r requirements.txt
-sudo updatedb
-sudo ldconfig
 ### DEPS END
 
 GITSBMDLINIT
 
 echo '#!/bin/bash
 cd /opt/ITSEC/4.Password/1.Network/brut3k1t/ex0dus-0x/brut3k1t
-./brut3k1t "$@"' > $EXECUTEABLE1
+./brut3k1t.sh "$@"' > $EXECUTEABLE1
 CHMODXEX1
 
 SYMLINKEX2TO1
