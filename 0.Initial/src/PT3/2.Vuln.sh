@@ -4,9 +4,8 @@ BASEDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/2.Vulnerability-Scanner
 ###############################################################################
 ######################   1.Vulnerability-Scanner   ####################
 ###########################################################################
-cd $BASEDIR/openvas-setup-files
-./openvas9_install-ALL.sh  # at times disbled to debug other scripts
-#
+cd $BASEDIR/openvas9
+./openvas9-install.sh # at times disbled to debug other scripts
 #1.Vulnerability-Scanner ##########################################################
 cd $BASEDIR/arachni
 ./arachni-install.sh
