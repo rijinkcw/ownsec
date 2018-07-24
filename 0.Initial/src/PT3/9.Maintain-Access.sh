@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 BASEDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/9.Maintain-Access
 ###############################################################################

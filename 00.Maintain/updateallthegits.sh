@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script runs the scripts containing the links to the update scripts, sorted by category. Additionally making a symlink for future updates.
 # To modify teh update lists go t othe linked scripts ...

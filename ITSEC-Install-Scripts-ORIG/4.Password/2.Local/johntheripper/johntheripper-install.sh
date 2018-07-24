@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #sudo make install for bash completition not working
 
 #1i
@@ -79,7 +79,7 @@ cd src
 make -j 4
 #sudo make install
 
-echo '#!/bin/bash
+echo '#!/usr/bin/env bash
 
 cd /opt/ITSEC/4.Password/2.Local/johntheripper/magnumripper/JohnTheRipper/run
 

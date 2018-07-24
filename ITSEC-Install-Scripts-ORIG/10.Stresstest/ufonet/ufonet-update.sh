@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -40,7 +40,7 @@ GITSBMDLINIT
 
 #sudo python setup.py install
 
-echo '#!/bin/bash
+echo '#!/usr/bin/env bash
 cd /opt/ITSEC/10.Stresstest/ufonet/epsylon/ufonet
 ./ufonet "$@"' > $EXECUTEABLE1
 CHMODXEX1

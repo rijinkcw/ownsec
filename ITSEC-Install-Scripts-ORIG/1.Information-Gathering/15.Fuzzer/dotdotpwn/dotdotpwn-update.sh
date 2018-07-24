@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -40,7 +40,7 @@ GITRESET
 
 GITSBMDLINIT
 
-echo '#!/bin/bash
+echo '#!/usr/bin/env bash
 cd /opt/ITSEC/1.Information-Gathering/15.Fuzzer/dotdotpwn/wireghoul/dotdotpwn
 perl dotdotpwn.pl "$@"' > $EXECUTEABLE2
 CHMODXEX1

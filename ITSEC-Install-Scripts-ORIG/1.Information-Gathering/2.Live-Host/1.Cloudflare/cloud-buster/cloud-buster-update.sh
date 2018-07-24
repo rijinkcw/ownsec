@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -41,7 +41,7 @@ GITSBMDLINIT
 sudo -H pip3 install --upgrade pip
 sudo -H pip3 install dnspython3
 
-echo '#!/bin/bash
+echo '#!/usr/bin/env bash
 
 cd /opt/ITSEC/1.Information-Gathering/2.Live-Host/1.Cloudflare/cloud-buster/SageHack/cloud-buster
 python3 bust "$@"' > $GITREPOROOT/$EXECUTEABLE1

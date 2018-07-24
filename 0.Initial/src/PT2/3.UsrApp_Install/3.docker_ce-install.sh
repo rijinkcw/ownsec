@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 BRANCH=18.04-bionic_beaver
 GITREPO=git://github.com/alphaaurigae/docker_ce_ppa-install.git

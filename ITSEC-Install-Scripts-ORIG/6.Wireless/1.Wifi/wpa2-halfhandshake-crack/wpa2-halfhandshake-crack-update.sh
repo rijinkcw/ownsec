@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -40,7 +40,7 @@ GITRESET
 GITSBMDLINIT
 sudo python setup.py install
 
-echo '#!/bin/bash
+echo '#!/usr/bin/env bash
 
 cd /opt/ITSEC/6.Wireless/1.Wifi/wpa2-halfhandshake-crack/dxa4481/WPA2-HalfHandshake-Crack/
 

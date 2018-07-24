@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 GITREPO=https://github.com/ptrkrysik/gr-gsm
 BRANCH=master

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -48,7 +48,7 @@ cd ../../certs/
 ./bootstrap
 
 cd ../hostapd-2.6/hostapd
-echo "#!/bin/bash
+echo "#!/usr/bin/env bash
 cd /opt/ITSEC/6.Wireless/1.Wifi/4.Evil-Twin/hostapd-wpe/OpenSecurityResearch/hostapd-wpe/hostapd-2.6/hostapd
 
 sudo ./hostapd-wpe hostapd-wpe.conf" > $EXECUTEABLE1

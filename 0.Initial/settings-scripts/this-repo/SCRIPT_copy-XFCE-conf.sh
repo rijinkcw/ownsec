@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 rm -rf /home/$USER/.config/xfce4
 cp -R /opt/ownsec/0.Initial/usrlcl/.config /home/$USER/.config

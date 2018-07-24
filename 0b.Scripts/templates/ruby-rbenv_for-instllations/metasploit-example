@@ -27,7 +27,7 @@ rbenv shell $RUBYVERSION
 # /opt/ownsec/3.Exploitation-Tools/metasploit/metasploit-setup-install.sh
 
 echo '
-#!/bin/bash 
+#!/usr/bin/env bash 
 
 BRANCH=master
 source ~/.bashrc

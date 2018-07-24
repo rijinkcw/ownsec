@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 	if pidof conky | grep [0-9] > /dev/null
 then

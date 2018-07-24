@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -43,7 +43,7 @@ sudo udpatedb
 sudo ldconfig
 
 rm -f $EXECUTEABLE3
-echo "#!/bin/bash 
+echo "#!/usr/bin/env bash 
 
 cd /opt/ownsec/ITSEC/6.Wireless/1.Wifi/atear/NORMA-Inc/AtEar 
 firefox 127.0.0.1:8080 </dev/null &>/dev/null &

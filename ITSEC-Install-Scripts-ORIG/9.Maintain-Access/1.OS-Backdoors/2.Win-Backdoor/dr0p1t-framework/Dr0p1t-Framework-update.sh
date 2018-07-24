@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -58,7 +58,7 @@ wine /home/$USER/.wine/drive_c/Python27/python.exe -m pip install pyinstaller
 
 python $EXECUTEABLE3
 
-echo '#!/bin/bash
+echo '#!/usr/bin/env bash
 
 cd /opt/ITSEC/9.Maintain-Access/1.OS-Backdoors/2.Win-Backdoor/dr0p1t-framework/D4Vinci/Dr0p1t-Framework
 python3 Dr0p1t.py "$@"' > $EXECUTEABLE1

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #DEPENDS HASHCAT
 
 #1i

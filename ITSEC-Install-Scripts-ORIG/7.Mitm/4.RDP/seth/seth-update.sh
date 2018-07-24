@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -37,7 +37,7 @@ GITCLONEFUNC
 GITSBMDLINIT
 #ph4gh
 
-echo '#!/bin/bash -i 
+echo '#!/usr/bin/env bash -i 
 
 cd /opt/ITSEC/7.Mitm/seth/SySS-Research/Seth
 python seth.py "$@"' > $GITREPOROOT/$EXECUTEABLE1

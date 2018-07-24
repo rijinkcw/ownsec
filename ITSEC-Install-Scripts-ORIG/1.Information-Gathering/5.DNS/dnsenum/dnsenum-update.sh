@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -39,7 +39,7 @@ GITRESET
 
 GITSBMDLINIT
 
-echo "#!/bin/bash 
+echo "#!/usr/bin/env bash 
 cd /opt/ITSEC/1.Information-Gathering/5.DNS/dnsenum/fwaeytens/dnsenum
 perl dnsenum.pl" > $EXECUTEABLE1
 chmod +x $EXECUTEABLE1

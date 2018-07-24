@@ -1,6 +1,6 @@
 #does not work - node problem
 # Depends Node.js 6.x https://docs.dripcap.org/build/linux.html
-#!/bin/bash
+#!/usr/bin/env bash
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 

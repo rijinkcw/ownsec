@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -36,7 +36,7 @@ GITCLONEFUNC
 
 GITSBMDLINIT
 
-echo '#!/bin/bash 
+echo '#!/usr/bin/env bash 
 
 cd /opt/ITSEC/7.Mitm/2.DNS/dnschef/iphelix/dnschef
 

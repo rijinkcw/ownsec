@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -33,7 +33,7 @@ GITCLONEFUNC
 ### DEPS END
 
 GITSBMDLINIT
-echo "#!/bin/bash 
+echo "#!/usr/bin/env bash 
 
 cd /opt/ITSEC/6.Wireless/1.Wifi/fern-wifi-cracker/savio-code/fern-wifi-cracker/Fern-Wifi-Cracker
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 
 #1i
@@ -45,7 +45,7 @@ sudo updatedb
 
 GITSBMDLINIT
 
-echo '#!/bin/bash 
+echo '#!/usr/bin/env bash 
 
 cd /opt/ITSEC/7.Mitm/mitmf/byt3bl33d3r/MITMf
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -35,7 +35,7 @@ GITCLONEFUNC
 
 GITSBMDLINIT
 
-echo '#!/bin/bash -i
+echo '#!/usr/bin/env bash -i
 
 cd /opt/ITSEC/1.Information-Gathering/11.Dork/bingoo/Hood3dRob1n/BinGoo
 

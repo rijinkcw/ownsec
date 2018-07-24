@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -47,7 +47,7 @@ GITRESET
 GITSBMDLINIT
 bundle install
 
-echo '#!/bin/bash -i
+echo '#!/usr/bin/env bash -i
 
 cd /opt/ITSEC/1.Information-Gathering/13.OSINT/twofi/digininja/twofi
 source ~/.bashrc
