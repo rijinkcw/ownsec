@@ -7,8 +7,8 @@ BASEDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/2.Vulnerability-Scanner
 cd $BASEDIR/openvas9
 ./openvas9-install.sh # at times disbled to debug other scripts
 #1.Vulnerability-Scanner ##########################################################
-cd $BASEDIR/arachni
-./arachni-install.sh
+# cd $BASEDIR/arachni # ruby 2.3.3 rbenv build fail - ssl?
+# ./arachni-install.sh
 cd $BASEDIR/atscan
 ./atscan-install.sh
 cd $BASEDIR/ava

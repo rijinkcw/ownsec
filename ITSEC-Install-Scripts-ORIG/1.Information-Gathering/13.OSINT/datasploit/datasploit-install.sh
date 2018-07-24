@@ -35,6 +35,7 @@ GITCLONEFUNC
 ### DEPS END
 
 GITSBMDLINIT
+pur -r requirements.txt
 PIP2INSTREQ
 
 mv config_sample.py config.py

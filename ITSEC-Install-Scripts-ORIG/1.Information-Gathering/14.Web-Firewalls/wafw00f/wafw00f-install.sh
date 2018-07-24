@@ -34,7 +34,7 @@ GITSBMDLINIT
 # needs makefile fix for pip "sudo -H pip install ..."
 sed -i -e 's/pip install/sudo -H pip install/g' Makefile
 make -j 4
-sudo python setup.py install
+sudo python3 setup.py install
 
 #333d
 CPDESKTFL
