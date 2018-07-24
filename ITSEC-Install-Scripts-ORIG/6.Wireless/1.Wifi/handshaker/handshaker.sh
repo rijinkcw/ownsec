@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -37,7 +37,7 @@ GITCLONEFUNC
 GITSBMDLINIT
 sudo make -j 4
 
-echo '#!/usr/bin/env bash
+echo '#!/usr/bin/bash
 
 cd /opt/ITSEC/6.Wireless/1.Wifi/handshaker/d4rkcat/HandShaker
 

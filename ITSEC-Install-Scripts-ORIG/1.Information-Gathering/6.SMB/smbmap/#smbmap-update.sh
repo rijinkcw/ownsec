@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -73,7 +73,7 @@ sudo ldconfig
 
 GITRESET
 GITSBMDLINIT
-echo "#!/usr/bin/env bash
+echo "#!/usr/bin/bash
 cd /opt/ITSEC/1.Information-Gathering/6.SMB/smbmap/ShawnDEvans/smbmap
 python smbmap.py" > $GITREPOROOT/smbmap.sh
 chmod +x $GITREPOROOT/smbmap.sh

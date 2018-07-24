@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 REPOROOT=/opt/ownsec
 BINDIR=/usr/local/bin

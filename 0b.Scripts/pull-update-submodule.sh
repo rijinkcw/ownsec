@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 # Update submodule && workdir repo
 # Update the submodule to its latest commit 

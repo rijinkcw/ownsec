@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 
 # Veil Evasion is no longer supported, use Veil 3.0! https://github.com/Veil-Framework/Veil

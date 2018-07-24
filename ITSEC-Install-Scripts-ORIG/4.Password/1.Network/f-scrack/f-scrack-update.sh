@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -40,7 +40,7 @@ GITCLONEFUNC
 GITRESET
 GITSBMDLINIT
 
-echo '#!/usr/bin/env bash
+echo '#!/usr/bin/bash
 
 #cd /opt/ITSEC/4.Password/1.Network/f-scrack/ysrc/F-Scrack
 cd /opt/ITSEC/4.Password/1.Network/f-scrack/zgwdg/F-Scrack

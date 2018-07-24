@@ -1,3 +1,3 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 sudo service docker stop

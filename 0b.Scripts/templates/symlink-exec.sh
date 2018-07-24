@@ -23,7 +23,7 @@
 #     several arguments.
 
 
-echo '#!/usr/bin/env bash
+echo '#!/usr/bin/bash
 cd /opt/ITSEC/2.Vulnerability-Scanner/proxystrike/sechacking/proxystrike
 python proxystrike.py "$@"' > $EXECUTEABLE2
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -42,7 +42,7 @@ sudo ldconfig
 
 GITSBMDLINIT
 
-echo '#!/usr/bin/env bash
+echo '#!/usr/bin/bash
 
 cd /opt/ITSEC/4.Password/1.Network/patator/lanjelot/patator
 

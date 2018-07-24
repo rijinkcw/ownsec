@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 BASEDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/10.Stresstest
 PIVOT=/opt/ownsec/ITSEC-Install-Scripts-ORIG/8.Tunnel/1.Pivot

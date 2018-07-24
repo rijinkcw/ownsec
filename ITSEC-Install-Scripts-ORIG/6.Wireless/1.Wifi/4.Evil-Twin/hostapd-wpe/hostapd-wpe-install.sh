@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -50,7 +50,7 @@ cd $GITREPOROOT/certs
 ./bootstrap
 
 cd $GITREPOROOT/hostapd-2.6/hostapd
-echo "#!/usr/bin/env bash
+echo "#!/usr/bin/bash
 cd /opt/ITSEC/6.Wireless/1.Wifi/4.Evil-Twin/hostapd-wpe/OpenSecurityResearch/hostapd-wpe/hostapd-2.6/hostapd
 
 sudo ./hostapd-wpe hostapd-wpe.conf" >> $GITREPOROOT/$EXECUTEABLE1

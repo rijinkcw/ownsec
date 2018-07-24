@@ -1,7 +1,7 @@
 #bug https://unix.stackexchange.com/questions/219152/pkglibexecdir-is-not-a-legitimate-directory
 
 
-#!/usr/bin/env bash
+#!/usr/bin/bash
 #
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh

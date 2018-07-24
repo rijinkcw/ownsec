@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 sudo service redis-server stop
 sudo service redis-server status

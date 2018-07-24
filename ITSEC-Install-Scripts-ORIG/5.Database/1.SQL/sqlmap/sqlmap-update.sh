@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -38,7 +38,7 @@ GITCLONEFUNC
 GITRESET
 GITSBMDLINIT
 
-echo '#!/usr/bin/env bash
+echo '#!/usr/bin/bash
 
 cd /opt/ITSEC/5.Database/1.SQL/sqlmap/sqlmapproject/sqlmap
 
@@ -46,7 +46,7 @@ python sqlmap.py "$@"' > $EXECUTEABLE1
 
 chmod +x $EXECUTEABLE1
 
-echo '#!/usr/bin/env bash
+echo '#!/usr/bin/bash
 
 cd /opt/ITSEC/5.Database/1.SQL/sqlmap/sqlmapproject/sqlmap
 

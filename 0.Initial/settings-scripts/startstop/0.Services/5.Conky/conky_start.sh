@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 conky -d -q -c /home/$USER/.conky/.conkyrc 
 

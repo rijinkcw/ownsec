@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 #NOT WORKING
 #
 #1i
@@ -47,7 +47,7 @@ GITSBMDLINIT
 
 #sudo python3 setup.py install
 
-echo '#!/usr/bin/env bash
+echo '#!/usr/bin/bash
 cd /opt/ITSEC/4.Password/1.Network/keimpx/inquisb/keimpx
 
 python keimpx.py "$@"' > $EXECUTEABLE1

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -36,7 +36,7 @@ GITCLONEFUNC
 
 GITSBMDLINIT
 
-echo '#!/usr/bin/env bash 
+echo '#!/usr/bin/bash 
 
 cd /opt/ITSEC/6.Wireless/1.Wifi/airgeddon/v1s1t0r1sh3r3/airgeddon
 sudo ./airgeddon.sh "$@"' > $EXECUTEABLE1

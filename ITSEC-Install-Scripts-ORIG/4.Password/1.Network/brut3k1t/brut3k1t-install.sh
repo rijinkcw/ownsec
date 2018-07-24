@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -42,7 +42,7 @@ sudo ldconfig
 
 GITSBMDLINIT
 
-echo '#!/usr/bin/env bash
+echo '#!/usr/bin/bash
 cd /opt/ITSEC/4.Password/1.Network/brut3k1t/ex0dus-0x/brut3k1t
 ./brut3k1t.sh "$@"' > $EXECUTEABLE1
 CHMODXEX1

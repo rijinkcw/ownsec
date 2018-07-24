@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -91,7 +91,7 @@ go build
 
 ##################################  CREATE SH - START PORT FORWARD & PREROUTING | launch hyperfox
 ################ launch hyperfox with networking
-echo '#!/usr/bin/env bash
+echo '#!/usr/bin/bash
 
 #export PATH=$GOPATH/bin:$PATH
 
@@ -124,7 +124,7 @@ CHMODXEX3
 ################################## end CREATE SH - START PORT
 
 ################################## DISABLE PORT FORWARD & PREROUTING
-echo '#!/usr/bin/env bash
+echo '#!/usr/bin/bash
 echo "disable port forwarding & prerouting"
 sudo sysctl net.ipv4.ip_forward
 sudo iptables -L -vt nat 

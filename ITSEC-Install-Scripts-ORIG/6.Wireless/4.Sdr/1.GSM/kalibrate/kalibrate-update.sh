@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 GITREPO=https://github.com/steve-m/kalibrate-rtl
 BRANCH=master

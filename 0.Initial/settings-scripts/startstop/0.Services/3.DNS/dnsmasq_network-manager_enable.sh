@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 
 sudo sed -i -e 's/##dns=dnsmasq/#dns=dnsmasq/g' /etc/NetworkManager/NetworkManager.conf

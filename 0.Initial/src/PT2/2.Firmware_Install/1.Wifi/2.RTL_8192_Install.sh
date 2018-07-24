@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 APTLSTDIR=/opt/ownsec/0.Initial/src/PT2/2.Firmware_Install/1.Wifi
 

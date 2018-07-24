@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 sudo systemctl disable redis-server.service
 sudo systemctl disable tor.service

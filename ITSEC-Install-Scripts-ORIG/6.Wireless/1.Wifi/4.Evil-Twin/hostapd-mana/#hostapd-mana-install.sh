@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 GITREPO=https://github.com/sensepost/hostapd-mana
 BRANCH=master

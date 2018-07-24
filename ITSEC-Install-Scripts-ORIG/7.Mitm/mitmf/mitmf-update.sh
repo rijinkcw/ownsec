@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 
 #1i
@@ -48,7 +48,7 @@ sudo -H pip2 install -r requirements.txt
 sudo ldconfig
 sudo updatedb
 
-echo '#!/usr/bin/env bash 
+echo '#!/usr/bin/bash 
 
 cd /opt/ITSEC/7.Mitm/mitmf/byt3bl33d3r/MITMf
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -37,7 +37,7 @@ GITCLONEFUNC
 GITSBMDLINIT
 #ph4gh
 
-echo '#!/usr/bin/env bash -i 
+echo '#!/usr/bin/bash -i 
 
 cd /opt/ITSEC/7.Mitm/det/sensepost/DET
 python det.py "$@"' > $GITREPOROOT/$EXECUTEABLE1

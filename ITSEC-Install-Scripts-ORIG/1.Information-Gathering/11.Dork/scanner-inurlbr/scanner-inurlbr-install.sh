@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -34,7 +34,7 @@ GITCLONEFUNC
 
 GITSBMDLINIT
 
-echo '#!/usr/bin/env bash
+echo '#!/usr/bin/bash
 cd /opt/ITSEC/1.Information-Gathering/11.Dork/scanner-inurlbr/googleinurl/SCANNER-INURLBR
 
 php inurlbr.php "$@"' >> $EXECUTEABLE2

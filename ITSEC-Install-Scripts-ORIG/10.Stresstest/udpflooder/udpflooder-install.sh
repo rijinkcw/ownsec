@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 #http://www.hackingvoip.com/sec_tools.html
 
@@ -45,7 +45,7 @@ tar xvf udpflood.tar.gz
 cd udpflood
 make
 
-echo '#!/usr/bin/env bash
+echo '#!/usr/bin/bash
 BINROOT=/opt/ITSEC/10.Stresstest/udp-flooder/udpflood
 cd $BINROOT
 ./udpflood "$@" ' > $BINROOT/$EXECUTEABLE1

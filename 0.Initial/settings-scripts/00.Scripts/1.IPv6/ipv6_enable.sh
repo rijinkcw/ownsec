@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 sudo rm -f /etc/sysctl.d/01-disable-ipv6.conf
 

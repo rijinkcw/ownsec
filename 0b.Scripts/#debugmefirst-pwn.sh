@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 ############################# VARIABLES START #############################
 initdir=/opt/ownsec/0.Initial

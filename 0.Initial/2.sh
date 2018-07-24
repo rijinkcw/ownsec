@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -i
+#!/usr/bin/bash -i
 
 bold=$(tput bold)
 normal=$(tput sgr0)
