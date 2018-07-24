@@ -30,7 +30,7 @@ ${normal}"
 GITCLONEFUNC
 
 ### DEPS:
-# no deps noted, feel free to add ...
+sudo apt-get install -y python-pycurl geoip-bin python-pygeoip python-whois
 ### DEPS END
 
 GITSBMDLINIT
