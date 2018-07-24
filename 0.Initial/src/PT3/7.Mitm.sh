@@ -7,7 +7,7 @@ BASEDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/7.Mitm
 #cd $BASEDIR/bdfproxy
 #./bdfproxy-install.sh # https://github.com/mitmproxy/mitmproxy/issues/1234 
 cd $BASEDIR/bettercap
-./bettercap-setup_all.sh
+./bettercap-install_ALL.sh
 #cd $BASEDIR/cdpsnarf
 #./cdpsnarf-install.sh #build fail
 cd $BASEDIR/det
