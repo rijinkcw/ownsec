@@ -1,4 +1,4 @@
-#!/usr/bin/bash -i
+#!/bin/bash -i
 
 bold=$(tput bold)
 normal=$(tput sgr0)

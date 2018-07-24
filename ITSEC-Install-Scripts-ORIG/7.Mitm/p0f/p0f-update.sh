@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -39,7 +39,7 @@ GITCLONEFUNC
 GITRESET
 GITSBMDLINIT
 make -j 4
-echo '#!/usr/bin/bash
+echo '#!/bin/bash
 cd /opt/ITSEC/7.Mitm/p0f/p0f/p0f
 ./p0f "$@"' > $GITREPOROOT/$EXECUTEABLE1
 

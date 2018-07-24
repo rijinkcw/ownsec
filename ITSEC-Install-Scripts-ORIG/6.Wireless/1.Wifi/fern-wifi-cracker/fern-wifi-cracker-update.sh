@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -37,7 +37,7 @@ GITCLONEFUNC
 sudo rm -f /usr/local/bin/$EXECUTEABLE2
 GITRESET
 GITSBMDLINIT
-echo "#!/usr/bin/bash 
+echo "#!/bin/bash 
 
 cd /opt/ITSEC/6.Wireless/1.Wifi/fern-wifi-cracker/savio-code/fern-wifi-cracker/Fern-Wifi-Cracker
 

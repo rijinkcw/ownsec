@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # INSTALL LAST
 
@@ -69,7 +69,7 @@ sed -i 's#/usr/share/fruitywifi/www#/opt/ITSEC/6.Wireless/1.Wifi/fruitywifi/xtr4
 ./install-FruityWiFi-PHP7.sh
 
 
-echo "!/usr/bin/bash
+echo "!/bin/bash
 
 cd /opt/ITSEC/6.Wireless/1.Wifi/fruitywifi/xtr4nge/FruityWifi
 sudo nginx_start.sh

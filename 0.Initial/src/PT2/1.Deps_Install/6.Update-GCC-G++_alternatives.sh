@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # 18.04 bionic-beaver
 # default 14.5.18 - gcc version 7.3.0 (Ubuntu 7.3.0-16ubuntu3) 

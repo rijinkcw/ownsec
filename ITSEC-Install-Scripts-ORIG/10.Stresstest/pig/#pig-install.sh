@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 #doesent work
 
 #1i

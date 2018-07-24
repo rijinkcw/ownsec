@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -49,11 +49,11 @@ GITSBMDLINIT
 
 make
 
-echo '#!/usr/bin/bash
+echo '#!/bin/bash
 cd /opt/ITSEC/4.Password/3.Wordlist/omen/RUB-SysSec/OMEN
 ./createNG "$@" ' > $EXECUTEABLE1
 
-echo '#!/usr/bin/bash
+echo '#!/bin/bash
 cd /opt/ITSEC/4.Password/3.Wordlist/omen/RUB-SysSec/OMEN
 ./createNG "$@" ' > $EXECUTEABLE3
 

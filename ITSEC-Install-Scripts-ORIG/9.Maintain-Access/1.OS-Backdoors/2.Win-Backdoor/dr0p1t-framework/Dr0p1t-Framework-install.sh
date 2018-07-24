@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 ## Not sure if works, install seems ok - havent tested the app
 #1i
@@ -51,7 +51,7 @@ wine /home/$USER/.wine/drive_c/Python27/python.exe -m pip install pyinstaller
 
 python3 $EXECUTEABLE3
 
-echo '#!/usr/bin/bash
+echo '#!/bin/bash
 
 cd /opt/ITSEC/9.Maintain-Access/1.OS-Backdoors/2.Win-Backdoor/dr0p1t-framework/D4Vinci/Dr0p1t-Framework
 python3 Dr0p1t.py "$@"' > $EXECUTEABLE1

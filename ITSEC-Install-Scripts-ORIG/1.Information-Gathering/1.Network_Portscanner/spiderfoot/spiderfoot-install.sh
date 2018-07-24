@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -44,14 +44,14 @@ GITSBMDLINIT
 
 #sudo python setup.py install 
 
-echo '#!/usr/bin/bash
+echo '#!/bin/bash
 
 cd /opt/ITSEC/1.Information-Gathering/1.Network_Portscanner/spiderfoot/smicallef/spiderfoot
 
 python sf.py "$@"' > $EXECUTEABLE1
 chmod +x $EXECUTEABLE1
 
-echo '#!/usr/bin/bash
+echo '#!/bin/bash
 
 cd /opt/ITSEC/1.Information-Gathering/1.Network_Portscanner/spiderfoot/smicallef/spiderfoot
 

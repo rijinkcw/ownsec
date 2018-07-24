@@ -1,4 +1,4 @@
-#!/usr/bin/bash -i
+#!/bin/bash -i
 
 BRANCH=18.04-bionic_beaver
 GITREPO=git://github.com/alphaaurigae/nvm_node-npm_install.git

@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #sudo echo "net.ipv6.conf.all.disable_ipv6 = 1" > /etc/sysctl.d/01-disable-ipv6.conf
 #sudo /bin/su -c "echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.d/01-disable-ipv6.conf"

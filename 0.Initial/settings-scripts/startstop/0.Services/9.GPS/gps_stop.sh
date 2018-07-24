@@ -1,3 +1,3 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 sudo service gps stop

@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -58,7 +58,7 @@ sudo mkdir -p /usr/share/wireshark/wireshark
 sudo ln -s  /usr/local/share/wireshark/manuf /usr/share/wireshark/wireshark/manuf 
 
 #rm -f kismet.sh
-#echo "#!/usr/bin/bash
+#echo "#!/bin/bash
 
 #kismetadapter=(ifconfig -a | sed 's/[ \t].*//;/^\(lo\|\)$/d' | sed '/enp*/d' | sed '/docker*/d' | sed '/br*/d')
  

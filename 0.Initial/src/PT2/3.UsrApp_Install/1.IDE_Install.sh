@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #mkdir -p /opt/DEV/eclipse
 #sudo chown -R $USER/$USER /opt

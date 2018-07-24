@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -78,7 +78,7 @@ cd server
 GITCLONEFUNC 
 cd server 
 #rm -f server.sh
-#echo "#!/usr/bin/bash
+#echo "#!/bin/bash
 
 #cd /opt/ITSEC/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/ares/sweetsoftware/Ares/server
 #python server.py" >> server.sh

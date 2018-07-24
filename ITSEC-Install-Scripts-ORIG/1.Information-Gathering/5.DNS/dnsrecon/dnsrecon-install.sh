@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -35,7 +35,7 @@ GITCLONEFUNC
 
 GITSBMDLINIT
 
-echo "#!/usr/bin/bash 
+echo "#!/bin/bash 
 cd /opt/ITSEC/1.Information-Gathering/5.DNS/dnsrecon/darkoperator/dnsrecon
 python dnsrecon.py" > $EXECUTEABLE1
 

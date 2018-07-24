@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # something stopped working, check again
 

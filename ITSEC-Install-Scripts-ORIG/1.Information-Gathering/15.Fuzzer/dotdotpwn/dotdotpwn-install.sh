@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -34,7 +34,7 @@ GITCLONEFUNC
 
 GITSBMDLINIT
 
-echo '#!/usr/bin/bash
+echo '#!/bin/bash
 cd /opt/ITSEC/1.Information-Gathering/15.Fuzzer/dotdotpwn/wireghoul/dotdotpwn
 perl dotdotpwn.pl "$@"' > $EXECUTEABLE2
 

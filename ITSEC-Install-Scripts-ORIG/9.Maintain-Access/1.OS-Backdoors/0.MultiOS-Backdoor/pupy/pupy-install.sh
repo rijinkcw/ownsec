@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -46,7 +46,7 @@ rm payload_templates.txz
 rm -fr payload_templates
 
 
-echo '#!/usr/bin/bash
+echo '#!/bin/bash
 GITREPOROOT=/opt/ITSEC/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/pupy/n1nj4sec/pupy
 cd $GITREPOROOT/pupy
 python pupygen.py "$@" ' > $GITREPOROOT/pupy/$EXECUTEABLE1

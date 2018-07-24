@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -42,7 +42,7 @@ sudo updatedb
 sudo ldconfig
 
 rm -f $EXECUTEABLE3
-echo '#!/usr/bin/bash 
+echo '#!/bin/bash 
 
 cd /opt/ITSEC/6.Wireless/1.Wifi/aircrack/Ethical-H4CK3R/Aircrack
 

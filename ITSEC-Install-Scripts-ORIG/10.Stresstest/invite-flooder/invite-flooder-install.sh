@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #http://www.hackingvoip.com/sec_tools.html
 

@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # doesent work local or docker either
 
 #1i

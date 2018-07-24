@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 #NOT WORKING - NVIDIA ONLY
 
 GITREPO=

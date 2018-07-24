@@ -1,5 +1,5 @@
 ######
-#!/usr/bin/bash
+#!/bin/bash
 #installed via apt- building problems
 
 

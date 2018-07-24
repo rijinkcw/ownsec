@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -44,7 +44,7 @@ mv config_sample.py config.py
 
 # python datasploit.py test.com
 
-echo '#!/usr/bin/bash
+echo '#!/bin/bash
 
 cd /opt/ITSEC/1.Information-Gathering/13.OSINT/datasploit/DataSploit/datasploit
 python datasploit.py "$@" ' > $GITREPOROOT/$EXECUTEABLE1

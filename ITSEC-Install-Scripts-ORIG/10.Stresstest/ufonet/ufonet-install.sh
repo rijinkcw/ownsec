@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
@@ -36,7 +36,7 @@ sudo apt-get install -y python-pycurl geoip-bin python-pygeoip python-whois
 GITSBMDLINIT
 #sudo python setup.py install
 
-echo '#!/usr/bin/bash
+echo '#!/bin/bash
 cd /opt/ITSEC/10.Stresstest/ufonet/epsylon/ufonet
 ./ufonet "$@"' > $EXECUTEABLE1
 CHMODXEX1

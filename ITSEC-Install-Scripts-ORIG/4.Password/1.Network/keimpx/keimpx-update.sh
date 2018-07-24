@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 #NOT WORKING
 #
 #1i
@@ -46,7 +46,7 @@ sudo updatedb
 sudo ldconfig
 #sudo python3 setup.py install
 
-echo '#!/usr/bin/bash
+echo '#!/bin/bash
 cd /opt/ITSEC/4.Password/1.Network/keimpx/inquisb/keimpx
  
 python keimpx.py "$@"' > $EXECUTEABLE1

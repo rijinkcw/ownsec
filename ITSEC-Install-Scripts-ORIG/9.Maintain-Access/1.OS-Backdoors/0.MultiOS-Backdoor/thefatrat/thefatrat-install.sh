@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 

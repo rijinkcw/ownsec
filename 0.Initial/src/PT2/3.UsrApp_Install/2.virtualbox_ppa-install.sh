@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 BRANCH=18.04-bionic_beaver
 GITREPO=git://github.com/alphaaurigae/virtualbox_ppa-install.git

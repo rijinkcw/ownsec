@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 #Sleuthkit first
 #JAVA IF NO MESF Setup
