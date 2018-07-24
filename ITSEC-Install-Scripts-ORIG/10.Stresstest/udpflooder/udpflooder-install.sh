@@ -11,9 +11,9 @@ DOWNLOADDIR=/opt/ITSEC/10.Stresstest/udp-flooder
 BINROOT=/opt/ITSEC/10.Stresstest/udp-flooder/udpflood
 #EXECUTEABLE1=pig.py
 #EXECUTEABLE2=pig
-EXECUTEABLE1=udpflood
+EXECUTEABLE1=udpflood.sh
 EXECUTEABLE2=udpflood
-
+EXECUTEABLE3=udpflood
 DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/10.Stresstest/udpflooder
 DSKTPFLSDEST=/home/$USER/.local/share/applications/10.Stresstest/udpflooder
 DSKTPFL=udpflood.desktop
@@ -45,6 +45,13 @@ tar xvf udpflood.tar.gz
 cd udpflood
 make
 
-SYMLINKEX2TO1
+echo '#!/usr/bin/env bash
+BINROOT=/opt/ITSEC/10.Stresstest/udp-flooder/udpflood
+cd $BINROOT
+./udpflood "$@" ' > $BINROOT/$EXECUTEABLE1
+chmod +x $BINROOT/$EXECUTEABLE1
+
+sudo rm -f $BINDIR/$EXECUTEABLE2
+sudo ln -s $BINROOT/$EXECUTEABLE1 $BINDIR/$EXECUTEABLE2
 
 CPDESKTFL
