@@ -2,8 +2,10 @@ geoip-database-extra
 libcryptokit-ocaml-dev 
 libghc-crypto-dev
 libjs-openlayers
-libwiretap5
+libwiretap7
+libwiretap-dev
 libwsutil6
 libwsutil-dev
+libwsutil8
 libgtk-3-dev
 libwscodecs1

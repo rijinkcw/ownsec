@@ -1,1 +1,4 @@
 python-epydoc
+libcrypt20-dev
+libnet1
+libnet1-dev
