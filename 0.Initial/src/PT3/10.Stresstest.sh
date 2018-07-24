@@ -17,8 +17,8 @@ cd $BASEDIR/rtp-flooder
 ./rtp-flooder-install.sh
 #cd $BASEDIR/siege
 #./#siege-install.sh#disabled die to build err, check back latr
-#cd $BASEDIR/slowhttptest
-#./slowhttptest-install.sh#build fail
+cd $BASEDIR/slowhttptest
+./slowhttptest-install.sh#build fail
 #cd $BASEDIR/t50
 #./t50-install.sh#build fail
 cd $BASEDIR/udpflooder
