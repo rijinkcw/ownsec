@@ -23,8 +23,8 @@ cd $BASEDIR/d-tect
 ./d-tect-install.sh # (needs console linking through d-tect-install.sh)
 cd $BASEDIR/golismero
 ./golismero-install.sh
-cd $BASEDIR/hellraiser
-./hellraiser-install.sh
+# cd $BASEDIR/hellraiser # https://github.com/m0nad/HellRaiser/issues/9
+# ./hellraiser-install.sh
 cd $BASEDIR/joomscan
 ./joomscan-install.sh
 cd $BASEDIR/lhf
