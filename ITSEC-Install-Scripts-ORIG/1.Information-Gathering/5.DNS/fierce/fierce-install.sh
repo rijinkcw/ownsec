@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 
 GITREPO=https://github.com/mschwager/fierce.git
@@ -11,31 +10,29 @@ DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/5.DNS/fi
 DSKTPFLSDEST=/home/$USER/.local/share/applications/1.Information-Gathering/5.DNS/fierce
 DSKTPFL=fierce.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/0.Initial/lst/apt
-#ph1a
 
-echo "${bold}
- _____ ___ _____ ____   ____ _____ 
-|  ___|_ _| ____|  _ \ / ___| ____|
-| |_   | ||  _| | |_) | |   |  _|  
-|  _|  | || |___|  _ <| |___| |___ 
-|_|   |___|_____|_| \_\\____|_____|
-           
-INSTALL
-${normal}"
+BANNER () {
+	echo "${bold}
+	 _____ ___ _____ ____   ____ _____ 
+	|  ___|_ _| ____|  _ \ / ___| ____|
+	| |_   | ||  _| | |_) | |   |  _|  
+	|  _|  | || |___|  _ <| |___| |___ 
+	|_|   |___|_____|_| \_\\____|_____|
+		   
+	INSTALL
+	${normal}"
 
-#plh11
+}
+DEPS () {
+	sudo -H pip3 install -r requirements.txt
+	sudo updatedb
+	sudo ldconfig
+}
+
+BANNER
 GITCLONEFUNC
-
-### DEPS:
-sudo -H pip3 install -r requirements.txt
-sudo updatedb
-sudo ldconfig
-### DEPS END
-
+DEPS
 make clean
 GITSBMDLINIT
-
 sudo python3 setup.py install
-
-#333d
 CPDESKTFL

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#1i
+# broken script
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 
 GITREPOROOT=/opt/ITSEC/3.Exploitation-Tools/6.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/ares/sweetsoftware/ares
@@ -10,14 +10,19 @@ DSKTPFLSDEST=/home/$USER/.local/share/applications/9.Maintain-Access/1.OS-Backdo
 DSKTPFL=ares.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/ares
 
-echo "${bold}
-    _    ____  _____ ____  
-   / \  |  _ \| ____/ ___| 
-  / _ \ | |_) |  _| \___ \ 
- / ___ \|  _ <| |___ ___) |
-/_/   \_\_| \_\_____|____/ 
-          
-${normal}"
+BANNER () {
+	echo "${bold}
+	    _    ____  _____ ____  
+	   / \  |  _ \| ____/ ___| 
+	  / _ \ | |_) |  _| \___ \ 
+	 / ___ \|  _ <| |___ ___) |
+	/_/   \_\_| \_\_____|____/ 
+		  
+	${normal}"
+}
+
+BANNER
+
 
 mkdir -p $GITREPOCLONEDIR 
 cd $GITREPOCLONEDIR 
@@ -34,21 +39,16 @@ then
 GITCLONEFUNC 
 git clean -f
 git fetch origin
-ddddf4
 git pull
-#56gd && #58gd
 
 ####### SERVER
 
-
-GITCLONEFUNC 
 git clone https://github.com/pyinstaller/pyinstaller
 cd pyinstaller
 git clean -f
 git fetch origin
-ddddf4
 git pull
-#56gd && #58gd
+
 cd bootloader
 python ./waf distclean all
 cd ..
@@ -57,15 +57,13 @@ cd ..
 
 GITCLONEFUNC 
 
-#git clone https://github.com/naihe2010/pyHook
-#cd pyHook
-#git clean -f
-#git fetch origin
-#ddddf4
-#git pull
-##56gd && #58gd
-#sudo python setup.py install
-#cd ..
+# git clone https://github.com/naihe2010/pyHook
+# cd pyHook
+# git clean -f
+# git fetch origin
+# git pull
+# sudo python setup.py install
+# cd ..
 #
 
 echo "done"
@@ -73,7 +71,6 @@ else
 echo "aborted - asuming deps installed"
 GITCLONEFUNC 
 fi
-#
 
 read -r -p "Config agent/python/settings.py? [Y/n] " response
 response=${response,,}    
@@ -137,4 +134,4 @@ else
 echo "aborted Agent build"
 GITCLONEFUNC 
 
-#333d && CPDESKTFL
+CPDESKTFL

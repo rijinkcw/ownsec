@@ -1,37 +1,32 @@
 #!/bin/bash
 
-#1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 
 DOWNLOADDIR=/opt/ITSEC/10.Stresstest/rtp-flooder
 BINROOT=/opt/ITSEC/10.Stresstest/rtp-flooder/rtpflood
-
 EXECUTEABLE1=rtpflood
 EXECUTEABLE2=rtpflood
 DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/10.Stresstest/rtp-flooder
 DSKTPFLSDEST=/home/$USER/.local/share/applications/10.Stresstest/rtp-flooder
 DSKTPFL=rtpflood.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/10.Stresstest/rtp-flooder
-#ph1a
 
-echo "${bold}
- ____ _____ ____  _____ _     ___   ___  ____  _____ ____  
-|  _ \_   _|  _ \|  ___| |   / _ \ / _ \|  _ \| ____|  _ \ 
-| |_) || | | |_) | |_  | |  | | | | | | | | | |  _| | |_) |
-|  _ < | | |  __/|  _| | |__| |_| | |_| | |_| | |___|  _ < 
-|_| \_\|_| |_|   |_|   |_____\___/ \___/|____/|_____|_| \_\
-              
-${normal}"
+BANNER () {
+	echo "${bold}
+	 ____ _____ ____  _____ _     ___   ___  ____  _____ ____  
+	|  _ \_   _|  _ \|  ___| |   / _ \ / _ \|  _ \| ____|  _ \ 
+	| |_) || | | |_) | |_  | |  | | | | | | | | | |  _| | |_) |
+	|  _ < | | |  __/|  _| | |__| |_| | |_| | |_| | |___|  _ < 
+	|_| \_\|_| |_|   |_|   |_____\___/ \___/|____/|_____|_| \_\
+		      
+	${normal}"
+}
 
+BANNER
 mkdir -p /opt/ITSEC/10.Stresstest/rtp-flooder
 
 
 cd $DOWNLOADDIR
-
-### DEPS:
-# no deps noted, feel free to add ...
-### DEPS END
-
 sudo rm -f /usr/local/bin/$EXECUTEABLE2
 sudo updatedb
 sudo ldconfig
@@ -43,5 +38,4 @@ make
 
 chmod +x $BINROOT/$EXECUTEABLE1
 sudo ln -s $BINROOT/$EXECUTEABLE1 /usr/local/bin/$EXECUTEABLE2
-
 CPDESKTFL

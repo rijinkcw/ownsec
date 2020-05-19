@@ -11,34 +11,37 @@ DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/1.Networ
 DSKTPFLSDEST=/home/$USER/.local/share/applications/1.Information-Gathering/1.Network_Portscanner/zmap
 DSKTPFL=zmap.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/1.Network_Portscanner/zmap
-#ph1a
 
-echo "${bold}
- _______  __    _    ____  
-|__  /  \/  |  / \  |  _ \ 
-  / /| |\/| | / _ \ | |_) |
- / /_| |  | |/ ___ \|  __/ 
-/____|_|  |_/_/   \_\_|    
-            
-INSTALL
-${normal}"
+BANNER () {
+	echo "${bold}
+	 _______  __    _    ____  
+	|__  /  \/  |  / \  |  _ \ 
+	  / /| |\/| | / _ \ | |_) |
+	 / /_| |  | |/ ___ \|  __/ 
+	/____|_|  |_/_/   \_\_|    
+		    
+	INSTALL
+	${normal}"
+}
 
-#plh11
+DEPS () {
+	sudo apt-get update
+	sudo apt-get upgrade
+	xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-zmap.txt") -r -- sudo apt-get install -y
+}
+
+BUILD () {
+	mkdir build
+	cd build
+	cmake ..
+	make -j 4
+}
+
+BANNER
+DEPS
 GITCLONEFUNC
-
-### DEPS:
-sudo apt-get update
-sudo apt-get upgrade
-xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-zmap.txt") -r -- sudo apt-get install -y
-### DEPS END
-
 make clean
 GITSBMDLINIT
-mkdir build
-cd build
-cmake ..
-make -j 4
-sudo make install 
-
-#333d
+BUILD
+sudo make install
 CPDESKTFL

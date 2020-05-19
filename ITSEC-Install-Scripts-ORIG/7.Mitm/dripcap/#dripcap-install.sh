@@ -1,7 +1,8 @@
-#does not work - node problem
-# Depends Node.js 6.x https://docs.dripcap.org/build/linux.html
 #!/bin/bash
-#1i
+
+# does not work - node problem
+# Depends Node.js 6.x https://docs.dripcap.org/build/linux.html
+
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 
 GITREPO=https://github.com/dripcap/dripcap.git
@@ -12,26 +13,26 @@ DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/7.Mitm/dripcap
 DSKTPFLSDEST=/home/$USER/.local/share/applications/7.Mitm/dripcap
 DSKTPFL=dripcap.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/7.Mitm/dripcap
-#ph1a
 
-echo "${bold}
- ____  ____  ___ ____   ____    _    ____  
-|  _ \|  _ \|_ _|  _ \ / ___|  / \  |  _ \ 
-| | | | |_) || || |_) | |     / _ \ | |_) |
-| |_| |  _ < | ||  __/| |___ / ___ \|  __/ 
-|____/|_| \_\___|_|    \____/_/   \_\_|    
-             
-INSTALL
-${normal}"
+BANNER () {
+	echo "${bold}
+	 ____  ____  ___ ____   ____    _    ____  
+	|  _ \|  _ \|_ _|  _ \ / ___|  / \  |  _ \ 
+	| | | | |_) || || |_) | |     / _ \ | |_) |
+	| |_| |  _ < | ||  __/| |___ / ___ \|  __/ 
+	|____/|_| \_\___|_|    \____/_/   \_\_|    
+		     
+	INSTALL
+	${normal}"
+}
+DEPS () {
+	sudo npm install -g gulp node-gyp babel-cli
+	sudo npm install
+}
 
-#plh11
+BANNER
 GITCLONEFUNC
-
-### DEPS:
-sudo npm install -g gulp node-gyp babel-cli
-sudo npm install
-### DEPS END
-
+DEPS
 GITSBMDLINIT
 ELECTRON_PATH=$(node -p "require('electron')")
 chrpath -r $(dirname $ELECTRON_PATH) $ELECTRON_PATH

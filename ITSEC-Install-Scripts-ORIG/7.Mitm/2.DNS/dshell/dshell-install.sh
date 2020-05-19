@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 
 GITREPO=https://github.com/USArmyResearchLab/Dshell
@@ -10,48 +9,46 @@ GITCLONEDIR=/opt/ITSEC/7.Mitm/2.DNS/dshell/USArmyResearchLab
 #EXECUTEABLE1=
 EXECUTEABLE2=dshell
 EXECUTEABLE3=dshell-decode
-#ph1b
 DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/7.Mitm/2.DNS/dshell
 DSKTPFLSDEST=/home/$USER/.local/share/applications/7.Mitm/2.DNS/dshell
 DSKTPFL1=dshell.desktop
 DSKTPFL2=dshell-decode.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/7.Mitm/2.DNS/dshell
-#ph1a
-echo "${bold}
- ____  ____  _   _ _____ _     _     
-|  _ \/ ___|| | | | ____| |   | |    
-| | | \___ \| |_| |  _| | |   | |    
-| |_| |___) |  _  | |___| |___| |___ 
-|____/|____/|_| |_|_____|_____|_____|
-         
-INSTALL
-${normal}"
 
-#plh11
+BANNER () {
+	echo "${bold}
+	 ____  ____  _   _ _____ _     _     
+	|  _ \/ ___|| | | | ____| |   | |    
+	| | | \___ \| |_| |  _| | |   | |    
+	| |_| |___) |  _  | |___| |___| |___ 
+	|____/|____/|_| |_|_____|_____|_____|
+		 
+	INSTALL
+	${normal}"
+}
+
+DEPS () {
+	sudo apt-get update
+	sudo apt-get upgrade
+	xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-dshell.txt") -r -- sudo apt-get install -y
+	sudo updatedb
+	sudo ldconfig
+
+	sudo -H pip install pygeoip
+	sudo updatedb
+	sudo ldconfig
+}
+
 
 GITCLONEFUNC
-
-### DEPS:
-
-sudo apt-get update
-sudo apt-get upgrade
-xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-dshell.txt") -r -- sudo apt-get install -y
-sudo updatedb
-sudo ldconfig
-
-sudo -H pip install pygeoip
-sudo updatedb
-sudo ldconfig
-### DEPS END
-
+DEPS
 make clean
 GITSBMDLINIT
-#Build
 
 python install-ubuntu.py
-#make -j 4
+# make -j 4
 
-#Install -- Create new Executeable Symlink
+# Install -- Create new Executeable Symlink
 sudo rm -f $BINDIR/$EXECUTEABLE2
 sudo rm -f $BINDIR/$EXECUTEABLE3
 sudo ln -s $GITREPOROOT/$EXECUTEABLE2 $BINDIR/$EXECUTEABLE2

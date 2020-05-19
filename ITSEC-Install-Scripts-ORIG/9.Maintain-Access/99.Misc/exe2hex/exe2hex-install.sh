@@ -17,37 +17,38 @@ DSKTPFL=exe2hex.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/9.Maintain-Access/99.Misc/exe2hex
 #ph1a
 
-echo "${bold}
- _______  _______ ____  _   _ _______  __
-| ____\ \/ / ____|___ \| | | | ____\ \/ /
-|  _|  \  /|  _|   __) | |_| |  _|  \  / 
-| |___ /  \| |___ / __/|  _  | |___ /  \ 
-|_____/_/\_\_____|_____|_| |_|_____/_/\_\
-            
-INSTALL
-${normal}"
+BANNER () {
+	echo "${bold}
+	 _______  _______ ____  _   _ _______  __
+	| ____\ \/ / ____|___ \| | | | ____\ \/ /
+	|  _|  \  /|  _|   __) | |_| |  _|  \  / 
+	| |___ /  \| |___ / __/|  _  | |___ /  \ 
+	|_____/_/\_\_____|_____|_| |_|_____/_/\_\
+		    
+	INSTALL
+	${normal}"
 
-#plh11
+}
+DEPS () {
+	sudo apt-get update
+	sudo apt-get upgrade
+	xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-exe2hex.txt") -r -- sudo apt-get install -y
+}
+PYEXEC () {
+	echo '#!/bin/bash
+
+	cd /opt/ITSEC/9.Maintain-Access/99.Misc/exe2hex/g0tmi1k/exe2hex
+
+	python3 exe2hex.py "$@"' > $EXECUTEABLE1
+	chmod +x $EXECUTEABLE1
+	chmod +x $EXECUTEABLE3
+}
+
+BANNER
 GITCLONEFUNC
-
-### DEPS:
-
-sudo apt-get update
-sudo apt-get upgrade
-xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-exe2hex.txt") -r -- sudo apt-get install -y
-### DEPS END
-
+DEPS
 GITSBMDLINIT
-
-echo '#!/bin/bash
-
-cd /opt/ITSEC/9.Maintain-Access/99.Misc/exe2hex/g0tmi1k/exe2hex
-
-python3 exe2hex.py "$@"' > $EXECUTEABLE1
-chmod +x $EXECUTEABLE1
-chmod +x $EXECUTEABLE3
-
+PYEXEC
 sudo ln -s $GITREPOROOT/$EXECUTEABLE3 $BINDIR/$EXECUTEABLE2
-#333d
 CPDESKTFL
 

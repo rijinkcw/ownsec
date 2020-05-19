@@ -11,32 +11,29 @@ DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/2.Live-H
 DSKTPFLSDEST=/home/$USER/.local/share/applications/1.Information-Gathering/2.Live-Host/netdiscover
 DSKTPFL=netdiscover.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/2.Live-Host/netdiscover
-#ph1a
 
-echo "${bold}
- _   _ _____ _____ ____ ___ ____   ____ _____     _______ ____  
-| \ | | ____|_   _|  _ \_ _/ ___| / ___/ _ \ \   / / ____|  _ \ 
-|  \| |  _|   | | | | | | |\___ \| |  | | | \ \ / /|  _| | |_) |
-| |\  | |___  | | | |_| | | ___) | |__| |_| |\ V / | |___|  _ < 
-|_| \_|_____| |_| |____/___|____/ \____\___/  \_/  |_____|_| \_\
-        
-INSTALL
-${normal}"
+BANNER () {
+	echo "${bold}
+	 _   _ _____ _____ ____ ___ ____   ____ _____     _______ ____  
+	| \ | | ____|_   _|  _ \_ _/ ___| / ___/ _ \ \   / / ____|  _ \ 
+	|  \| |  _|   | | | | | | |\___ \| |  | | | \ \ / /|  _| | |_) |
+	| |\  | |___  | | | |_| | | ___) | |__| |_| |\ V / | |___|  _ < 
+	|_| \_|_____| |_| |____/___|____/ \____\___/  \_/  |_____|_| \_\
+		
+	INSTALL
+	${normal}"
+}
 
-#plh11
+BUILD () {
+	mkdir build
+	cd build
+	cmake ..
+	make -j 4
+}
+
+BANNER
 GITCLONEFUNC
-
-### DEPS:
-# no deps noted, feel free to add ...
-### DEPS END
-
 GITSBMDLINIT
-
-mkdir build
-cd build
-cmake ..
-make -j 4
+BUILD
 sudo make install
-
-#333d
 CPDESKTFL

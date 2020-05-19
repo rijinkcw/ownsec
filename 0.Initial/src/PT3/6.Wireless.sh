@@ -11,70 +11,114 @@ BASEDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/6.Wireless
 #####################################################
 #
 #
-###############################################################################
-######################   1.WPS   ####################
-###########################################################################
-cd $BASEDIR/1.Wifi/1.WPS/pixiewps
-./pixiewps-install.sh
-cd $BASEDIR/1.Wifi/1.WPS/bully
-./bully-install.sh
-cd $BASEDIR/1.Wifi/1.WPS/reaver-wps
-./reaver-wps-install.sh  
-#
-#
-###############################################################################
-######################   1.Wifi/2.Routerkeys   ####################
-###########################################################################
-cd $BASEDIR/1.Wifi/2.Routerkeys/routerkeygenpc
-./routerkeygenpc-install.sh # github username pass prompt during install
-#
-#
-###############################################################################
-######################   1.Wifi/3.Jammer   ####################
-###########################################################################
-cd $BASEDIR/1.Wifi/3.Jammer/mdk3-master
-./mdk3-master-install.sh #alternate git vers by camerony
-cd $BASEDIR/1.Wifi/3.Jammer/wifijammer
-./wifijammer-install.sh 
-#
-#
-###############################################################################
-######################   1.Wifi/4.Evil-Twin   ####################
-###########################################################################
 
-# didnt look much into it yet, needs more work mst probly.
-#./#hostapd-mana-install.sh 
-# cd $BASEDIR/1.Wifi/4.Evil-Twin/hostapd-wpe # build fail, ssl?
-# ./hostapd-wpe-install.sh
-#######################################################
-######################   1.Wifi MAIN   ###############
-#####################################################
-cd $BASEDIR/1.Wifi/aircrack-ng
-./aircrack-ng-install.sh
-cd $BASEDIR/1.Wifi/atear
-./atear-install.sh #PIP deps
-cd $BASEDIR/1.Wifi/eapmd5pass
-./eapmd5pass-install.sh
+WIFI () {
 
-cd $BASEDIR/1.Wifi/fern-wifi-cracker
-./fern-wifi-cracker-install.sh
+	WPS () {
+		PIXIEWPS () {
+			cd $BASEDIR/1.Wifi/1.WPS/pixiewps
+			./pixiewps-install.sh
+		}
+		BULLY () {
+			cd $BASEDIR/1.Wifi/1.WPS/bully
+			./bully-install.sh
+		}
+		REAVER () {
+			cd $BASEDIR/1.Wifi/1.WPS/reaver-wps
+			./reaver-wps-install.sh
+		}
+		PIXIEWPS
+		BULLY
+		REAVER
+	}
 
- #install last # needs fixes.
-#kismet config last line remove dash end of path.
-cd $BASEDIR/1.Wifi/kismet
-./kismet-install.sh #needs check
-#cd $BASEDIR/1.Wifi/wifi-pumpkin
-#./wifi-pumpkin-install.sh # needs check for hostapd
-#cd $BASEDIR/1.Wifi/fruitywifi
-#./fruitywifi-install.sh  # install last
-cd $BASEDIR/1.Wifi/airgeddon
-./airgeddon-install.sh #install last
-cd $BASEDIR/1.Wifi/Aircrack
-./aircrack-install.sh # install last
-###################################################################################
-###################### WIFI END
+	ROUTERKEYS () { 
 
+		cd $BASEDIR/1.Wifi/2.Routerkeys/routerkeygenpc
+		./routerkeygenpc-install.sh
+	}
+	
+	# ROUTERKEYS # github username pass prompt during install
+	
+	WIFI_JAMMER () {
+		MD3K_MASTER () {
+		cd $BASEDIR/1.Wifi/3.Jammer/mdk3-master
+		./mdk3-master-install.sh
+		}
+		WIFIJAMMER () {
+		cd $BASEDIR/1.Wifi/3.Jammer/wifijammer
+		./wifijammer-install.sh
+		}
 
+		MD3K_MASTER # alternate git vers by camerony
+		WIFIJAMMER
+		
+	}
+	WIFI_JAMMER
+	
+	EVILTWIN () {
+	
+		HOSTAPD_MANA () {
+			cd $BASEDIR/1.Wifi/4.Evil-Twin/hostapd-mana
+			./#hostapd-mana-install.sh 
+		}
+		HOSTAPD_WPE () {
+			cd $BASEDIR/1.Wifi/4.Evil-Twin/hostapd-wpe
+			./hostapd-wpe-install.sh
+		}
+		AIRCRACK_NG () {
+			cd $BASEDIR/1.Wifi/aircrack-ng
+			./aircrack-ng-install.sh
+		}
+		ATEAR () {
+			cd $BASEDIR/1.Wifi/atear
+			./atear-install.sh #PIP deps
+		}
+		EAPMD5PASS () {
+			cd $BASEDIR/1.Wifi/eapmd5pass
+			./eapmd5pass-install.sh
+		}
+		FERN_WIFI_CRACKER () {
+			cd $BASEDIR/1.Wifi/fern-wifi-cracker
+			./fern-wifi-cracker-install.sh
+		}
+		# HOSTAPD_MANA	# didnt look much into it yet, needs more work mst probly.
+		# HOSTAPD__WPE # build fail, ssl?
+		AIRCRACK_NG
+		ATEAR
+		EAPMD5PASS
+		FERN_WIFI_CRACKER
+		
+		
+	}
 
+	INSTALL_LASTWIFI () {
+		KISMET () {
+			cd $BASEDIR/1.Wifi/kismet
+			./kismet-install.sh #needs check
+		}
+		WIFI_PUMPKIN () {
+			cd $BASEDIR/1.Wifi/wifi-pumpkin
+			./wifi-pumpkin-install.sh # needs check for hostapd
 
+		}
+		FRUITYWIFI () {
+			cd $BASEDIR/1.Wifi/fruitywifi
+			./fruitywifi-install.sh
+		}
+		AIRGEDDON () {
+			cd $BASEDIR/1.Wifi/airgeddon
+			./airgeddon-install.sh
+		}
+		AIRCRACK () {
+			cd $BASEDIR/1.Wifi/Aircrack
+			./aircrack-install.sh
+		}
+		KISMET # install last # needs fixes. # kismet config last line remove dash end of path.
+		# WIFI_PUMPKIN
+		# FRUITYWIFI
+		AIRGEDDON
+		AIRCRACK 
+	}
 
+}

@@ -17,46 +17,53 @@ DSKTPFLSDEST=/home/$USER/.local/share/applications/1.Information-Gathering/1.Net
 DSKTPFL1=spiderfoot.desktop
 DSKTPFL2=spiderfoot_cli.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/1.Network_Portscanner/spiderfoot
-#ph1a
 
-echo "${bold}
- ____  ____ ___ ____  _____ ____  _____ ___   ___ _____ 
-/ ___||  _ \_ _|  _ \| ____|  _ \|  ___/ _ \ / _ \_   _|
-\___ \| |_) | || | | |  _| | |_) | |_ | | | | | | || |  
- ___) |  __/| || |_| | |___|  _ <|  _|| |_| | |_| || |  
-|____/|_|  |___|____/|_____|_| \_\_|   \___/ \___/ |_|  
-                         
-INSTALL
-${normal}"
+BANNER () {
+	echo "${bold}
+	 ____  ____ ___ ____  _____ ____  _____ ___   ___ _____ 
+	/ ___||  _ \_ _|  _ \| ____|  _ \|  ___/ _ \ / _ \_   _|
+	\___ \| |_) | || | | |  _| | |_) | |_ | | | | | | || |  
+	 ___) |  __/| || |_| | |___|  _ <|  _|| |_| | |_| || |  
+	|____/|_|  |___|____/|_____|_| \_\_|   \___/ \___/ |_|  
+		                 
+	INSTALL
+	${normal}"
+}
 
-#plh11
+DEPS () {
+	sudo apt-get install -y swig
+	pur -r requirements.txt
+	# sudo -H pip2 install lxml netaddr M2Crypto CherryPy Mako requests bs4 beautifulsoup4
+	sudo -H pip2 install -r requirements.txt
+
+}
+
+PYINSTALL () {
+	#sudo python setup.py install 
+}
+
+PYEXEC () {
+	echo '#!/bin/bash
+
+	cd /opt/ITSEC/1.Information-Gathering/1.Network_Portscanner/spiderfoot/smicallef/spiderfoot
+
+	python sf.py "$@"' > $EXECUTEABLE1
+	chmod +x $EXECUTEABLE1
+
+	echo '#!/bin/bash
+
+	cd /opt/ITSEC/1.Information-Gathering/1.Network_Portscanner/spiderfoot/smicallef/spiderfoot
+
+	python sfcli.py "$@"' > $EXECUTEABLE3
+	chmod +x $EXECUTEABLE3
+}
+
+DEPS
 GITCLONEFUNC
-
-### DEPS:
-sudo apt-get install -y swig
-pur -r requirements.txt
-# sudo -H pip2 install lxml netaddr M2Crypto CherryPy Mako requests bs4 beautifulsoup4
-sudo -H pip2 install -r requirements.txt
-### DEPS END
-
 make clean
 GITSBMDLINIT
-
-#sudo python setup.py install 
-
-echo '#!/bin/bash
-
-cd /opt/ITSEC/1.Information-Gathering/1.Network_Portscanner/spiderfoot/smicallef/spiderfoot
-
-python sf.py "$@"' > $EXECUTEABLE1
-chmod +x $EXECUTEABLE1
-
-echo '#!/bin/bash
-
-cd /opt/ITSEC/1.Information-Gathering/1.Network_Portscanner/spiderfoot/smicallef/spiderfoot
-
-python sfcli.py "$@"' > $EXECUTEABLE3
-chmod +x $EXECUTEABLE3
+# PYINSTALL
+PYEXEC
 
 SYMLINKEX2TO1
 sudo ln -s $GITREPOROOT/$EXECUTEABLE3 $BINDIR/$EXECUTEABLE4

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 
 reporoot=/opt/ITSEC/1.Information-Gathering/6.SMB/accceck/labs.portcullis.co.uk
@@ -11,25 +10,22 @@ DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/6.SMB/ac
 DSKTPFLSDEST=/home/$USER/.local/share/applications/1.Information-Gathering/6.SMB/accceck
 DSKTPFL=acccheck.desktop
 
+BANNER () {
+	echo "${bold}
+	    _    ____ ____ ____ _   _ _____ ____ _  __
+	   / \  / ___/ ___/ ___| | | | ____/ ___| |/ /
+	  / _ \| |  | |  | |   | |_| |  _|| |   | ' / 
+	 / ___ \ |__| |__| |___|  _  | |__| |___| . \ 
+	/_/   \_\____\____\____|_| |_|_____\____|_|\_\
+		    
+	INSTALL
+	${normal}"
+}
 
-echo "${bold}
-    _    ____ ____ ____ _   _ _____ ____ _  __
-   / \  / ___/ ___/ ___| | | | ____/ ___| |/ /
-  / _ \| |  | |  | |   | |_| |  _|| |   | ' / 
- / ___ \ |__| |__| |___|  _  | |__| |___| . \ 
-/_/   \_\____\____\____|_| |_|_____\____|_|\_\
-            
-INSTALL
-${normal}"
+BANNER
 
 mkdir -p /opt/ITSEC/1.Information-Gathering/6.SMB/accceck/labs.portcullis.co.uk
 cd $reporoot
-
-### DEPS:
-# no deps noted, feel free to add ...
-sudo udpatedb
-sudo ldconfig
-### DEPS END
 
 sudo rm -r /usr/local/bin/acccheck
 sudo rm -r $reporoot/acccheck.sh
@@ -41,7 +37,6 @@ cd $acccheck
 
 chmod +x $reporoot/$acccheck/acccheck.pl
 sudo ln -s $reporoot/$acccheck/acccheck.pl /usr/local/bin/acccheck
-#333d
 CPDESKTFL
 sudo updatedb
 

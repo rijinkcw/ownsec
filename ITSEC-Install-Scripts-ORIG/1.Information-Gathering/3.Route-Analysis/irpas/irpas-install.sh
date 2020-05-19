@@ -1,16 +1,6 @@
 #!/bin/bash
 
-#1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
-
-echo "${bold}
- ___ ____  ____   _    ____  
-|_ _|  _ \|  _ \ / \  / ___| 
- | || |_) | |_) / _ \ \___ \ 
- | ||  _ <|  __/ ___ \ ___) |
-|___|_| \_\_| /_/   \_\____/ 
-          
-${normal}"
 
 reporoot=/opt/ITSEC/1.Information-Gathering/3.Route-Analysis/irpas/phenoelit.org
 irpas=irpas_0.10
@@ -18,7 +8,6 @@ irpasurl=http://www.phenoelit.org/irpas/irpas_0.10.tar.gz
 #for bin in dhcpx itrace tctrace ass file2cable dfkaa cdp hsrp icmp_redirect igrp irdp irdpresponder netenum netmask protos timestamp
 #do sudo rm /usr/local/bin/irpas-$bindone
 
-#
 DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/3.Route-Analysis/irpas
 DSKTPFLSDEST=/home/$USER/.local/share/applications/1.Information-Gathering/3.Route-Analysis/irpas
 DSKTPFL1=irpas-dhcpx.desktop
@@ -38,14 +27,23 @@ DSKTPFL14=irpas-netmask.desktop
 DSKTPFL15=irpas-protos.desktop
 DSKTPFL16=irpas-timestamp.desktop
 
+BANNER () {
+	echo "${bold}
+	 ___ ____  ____   _    ____  
+	|_ _|  _ \|  _ \ / \  / ___| 
+	 | || |_) | |_) / _ \ \___ \ 
+	 | ||  _ <|  __/ ___ \ ___) |
+	|___|_| \_\_| /_/   \_\____/ 
+		  
+	${normal}"
+}
+
+
+
 rm -f $DSKTPFLSDEST/irpas-*
 
 mkdir -p $reporoot
 cd $reporoot
-
-### DEPS:
-# no deps noted, feel free to add ...
-### DEPS END
 
 wget $irpasurl
 tar xvfz $irpas.tar.gz
@@ -53,7 +51,7 @@ sudo rm -r $irpas.tar.gz
 cd $irpas
 make -j 4
 for bin in dhcpx itrace tctrace ass file2cable dfkaa cdp hsrp icmp_redirect igrp irdp irdpresponder netenum netmask protos timestamp do sudo ln -s $reporoot/$irpas/$bin /usr/local/bin/irpas-$bindone
-#
+
 cp $DSKTPFLS/$DSKTPFL1 $DSKTPFLSDEST/$DSKTPFL1
 cp $DSKTPFLS/$DSKTPFL2 $DSKTPFLSDEST/$DSKTPFL2
 cp $DSKTPFLS/$DSKTPFL3 $DSKTPFLSDEST/$DSKTPFL3

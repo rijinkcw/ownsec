@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 
 GITREPO=https://github.com/orgcandman/simple-fuzzer.git
@@ -12,29 +11,26 @@ DSKTPFLSDEST=/home/$USER/.local/share/applications/1.Information-Gathering/15.Fu
 DSKTPFL=simple-fuzzer.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/15.Fuzzer/simplefuzzer/simple-fuzzer
 
-#ph1a
+BANNER () {
+	echo "${bold}
+	 ____ ___ __  __ ____  _     _____ _____ _   _ _______________ ____  
+	/ ___|_ _|  \/  |  _ \| |   | ____|  ___| | | |__  /__  / ____|  _ \ 
+	\___ \| || |\/| | |_) | |   |  _| | |_  | | | | / /  / /|  _| | |_) |
+	 ___) | || |  | |  __/| |___| |___|  _| | |_| |/ /_ / /_| |___|  _ < 
+	|____/___|_|  |_|_|   |_____|_____|_|    \___//____/____|_____|_| \_\
+		     
+	INSTALL
+	${normal}"
+}
 
-echo "${bold}
- ____ ___ __  __ ____  _     _____ _____ _   _ _______________ ____  
-/ ___|_ _|  \/  |  _ \| |   | ____|  ___| | | |__  /__  / ____|  _ \ 
-\___ \| || |\/| | |_) | |   |  _| | |_  | | | | / /  / /|  _| | |_) |
- ___) | || |  | |  __/| |___| |___|  _| | |_| |/ /_ / /_| |___|  _ < 
-|____/___|_|  |_|_|   |_____|_____|_|    \___//____/____|_____|_| \_\
-             
-INSTALL
-${normal}"
+BUILD () {
+	./configure
+	make -j 4
+}
 
-#plh11
+BANNER
 GITCLONEFUNC
-
-### DEPS:
-# no deps noted, feel free to add ...
-### DEPS END
-
 GITSBMDLINIT
-
-./configure
-make -j 4
+BUILD
 sudo make install
-
 CPDESKTFL

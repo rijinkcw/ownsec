@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 
 GITREPO=https://github.com/droe/fiked.git
@@ -11,37 +10,37 @@ DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/7.Mitm/3.VPN/fiked
 DSKTPFLSDEST=/home/$USER/.local/share/applications/7.Mitm/3.VPN/fiked
 DSKTPFL=fiked.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/7.Mitm/3.VPN/fiked
-#ph1a
 
-echo "${bold}
- _____ ___ _  _______ ____  
-|  ___|_ _| |/ / ____|  _ \ 
-| |_   | || ' /|  _| | | | |
-|  _|  | || . \| |___| |_| |
-|_|   |___|_|\_\_____|____/ 
-           
-INSTALL
-${normal}"
+BANNER () {
+	echo "${bold}
+	 _____ ___ _  _______ ____  
+	|  ___|_ _| |/ / ____|  _ \ 
+	| |_   | || ' /|  _| | | | |
+	|  _|  | || . \| |___| |_| |
+	|_|   |___|_|\_\_____|____/ 
+		   
+	INSTALL
+	${normal}"
+}
 
+DEPS () {
+	sudo apt-get update
+	sudo apt-get upgrade
+	xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-fiked.txt") -r -- sudo apt-get install -y
+}
+
+BUILD () {
+	sudo rm -f makefile
+	cp GNUmakefile makefile
+	make -j 4
+}
+
+BANNER
 GITCLONEFUNC
-GITCLONEFUNC
-git clone $GITREPO
-GITCLONEFUNC
-
-### DEPS:
-
-sudo apt-get update
-sudo apt-get upgrade
-xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-fiked.txt") -r -- sudo apt-get install -y
-### DEPS END
-
+DEPS
 sudo make uninstall
 make clean
 GITSBMDLINIT
-
-sudo rm -f makefile
-cp GNUmakefile makefile
-make -j 4
+BUILD
 sudo make install
-#333d
 CPDESKTFL

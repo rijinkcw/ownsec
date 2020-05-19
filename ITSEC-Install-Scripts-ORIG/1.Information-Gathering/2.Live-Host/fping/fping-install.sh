@@ -11,31 +11,29 @@ DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/2.Live-H
 DSKTPFLSDEST=/home/$USER/.local/share/applications/1.Information-Gathering/2.Live-Host/fping
 DSKTPFL=fping.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/2.Live-Host/fping
-#ph1a
 
-echo "${bold}
- _____ ____ ___ _   _  ____ 
-|  ___|  _ \_ _| \ | |/ ___|
-| |_  | |_) | ||  \| | |  _ 
-|  _| |  __/| || |\  | |_| |
-|_|   |_|  |___|_| \_|\____|
-         
-INSTALL
-${normal}"
+BANNER () {
+	echo "${bold}
+	 _____ ____ ___ _   _  ____ 
+	|  ___|  _ \_ _| \ | |/ ___|
+	| |_  | |_) | ||  \| | |  _ 
+	|  _| |  __/| || |\  | |_| |
+	|_|   |_|  |___|_| \_|\____|
+		 
+	INSTALL
+	${normal}"
+}
 
-#plh11
+BUILD () {
+	./autogen.sh
+	./configure
+	make -j 4
+}
+
+BANNER
 GITCLONEFUNC
-
-### DEPS:
-# no deps noted, feel free to add ...
-### DEPS END
-
 make clean
 GITSBMDLINIT
-
-./autogen.sh
-./configure
-make -j 4
+BUILD
 sudo make install
-#333d
 CPDESKTFL

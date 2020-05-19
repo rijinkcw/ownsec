@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 
 GITREPO=https://github.com/opsdisk/metagoofil.git
@@ -9,37 +8,31 @@ GITREPOROOT=/opt/ITSEC/1.Information-Gathering/13.OSINT/metagoofil/opsdisk/metag
 GITCLONEDIR=/opt/ITSEC/1.Information-Gathering/13.OSINT/metagoofil/opsdisk
 EXECUTEABLE1=metagoofil.py
 EXECUTEABLE2=metagoofil
-#ph1b
 DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/13.OSINT/metagoofil
 DSKTPFLSDEST=/home/$USER/.local/share/applications/1.Information-Gathering/13.OSINT/metagoofil
 DSKTPFL=metagoofil.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/1.Information-Gathering/13.OSINT/metagoofil
-#ph1a
 
-echo "${bold}
- __  __ _____ _____  _    ____  ___   ___  _____ ___ _     
-|  \/  | ____|_   _|/ \  / ___|/ _ \ / _ \|  ___|_ _| |    
-| |\/| |  _|   | | / _ \| |  _| | | | | | | |_   | || |    
-| |  | | |___  | |/ ___ \ |_| | |_| | |_| |  _|  | || |___ 
-|_|  |_|_____| |_/_/   \_\____|\___/ \___/|_|   |___|_____|
-INSTALL
-${normal}"
+BANNER () {
+	echo "${bold}
+	 __  __ _____ _____  _    ____  ___   ___  _____ ___ _     
+	|  \/  | ____|_   _|/ \  / ___|/ _ \ / _ \|  ___|_ _| |    
+	| |\/| |  _|   | | / _ \| |  _| | | | | | | |_   | || |    
+	| |  | | |___  | |/ ___ \ |_| | |_| | |_| |  _|  | || |___ 
+	|_|  |_|_____| |_/_/   \_\____|\___/ \___/|_|   |___|_____|
+	INSTALL
+	${normal}"
+}
+DEPS () {
+	sudo -H pip2 install google
+	sudo updatedb
+	sudo ldconfig
+}
 
+BANNER
+DEPS
 GITCLONEFUNC
-GITCLONEFUNC
-git clone $GITREPO
-GITCLONEFUNC
-
-### DEPS:
-sudo -H pip2 install google
-sudo updatedb
-sudo ldconfig
-### DEPS END
-
 GITSBMDLINIT
-
 CHMODXEX1
-SYMLINKEX2TO1
-
-#333d  
+SYMLINKEX2TO1 
 CPDESKTFL

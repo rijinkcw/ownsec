@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 
 GITREPO=https://github.com/n1nj4sec/pupy
@@ -14,28 +13,29 @@ DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/9.Maintain-Access/1.OS-Backdoors
 DSKTPFLSDEST=/home/$USER/.local/share/applications/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/pupy
 DSKTPFL=pupy.desktop
 
-#ph1a
+BANNER () {
+	echo "${bold}
+	    _    ____  
+	 ____  _   _ ______   __
+	|  _ \| | | |  _ \ \ / /
+	| |_) | | | | |_) \ V / 
+	|  __/| |_| |  __/ | |  
+	|_|    \___/|_|    |_|  
+		                
+	BUILDER INSTALL
+	${normal}"
+}
+PYBIN () {
+	echo '#!/bin/bash
+	GITREPOROOT=/opt/ITSEC/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/pupy/n1nj4sec/pupy
+	cd $GITREPOROOT/pupy
+	python pupygen.py "$@" ' > $GITREPOROOT/pupy/$EXECUTEABLE1
+	chmod +x $GITREPOROOT/pupy/$EXECUTEABLE1
+}
 
-echo "${bold}
-    _    ____  
- ____  _   _ ______   __
-|  _ \| | | |  _ \ \ / /
-| |_) | | | | |_) \ V / 
-|  __/| |_| |  __/ | |  
-|_|    \___/|_|    |_|  
-                        
-BUILDER INSTALL
-${normal}"
-
-#plh11
+BANNER
 GITCLONEFUNC
-
-### DEPS:
-# no deps noted, feel free to add ...
-### DEPS END
-
-git submodule init
-git submodule update
+GITSBMDLINIT
 
 pur -r pupy/requirements.txt
 sudo -H pip install -r pupy/requirements.txt
@@ -44,14 +44,7 @@ tar xvf payload_templates.txz
 mv payload_templates/* pupy/payload_templates/
 rm payload_templates.txz
 rm -fr payload_templates
-
-
-echo '#!/bin/bash
-GITREPOROOT=/opt/ITSEC/9.Maintain-Access/1.OS-Backdoors/0.MultiOS-Backdoor/pupy/n1nj4sec/pupy
-cd $GITREPOROOT/pupy
-python pupygen.py "$@" ' > $GITREPOROOT/pupy/$EXECUTEABLE1
-chmod +x $GITREPOROOT/pupy/$EXECUTEABLE1
+PYBIN
 sudo rm -f $BINDIR/$EXECUTEABLE2
 sudo ln -s $GITREPOROOT/pupy/$EXECUTEABLE1 $BINDIR/$EXECUTEABLE2
-
 CPDESKTFL

@@ -2,7 +2,6 @@
 
 # INSTALL LAST
 
-#1i
 . /opt/ownsec/ITSEC-Install-Scripts-ORIG/001.functions/all-scripts.sh
 
 GITREPO=https://github.com/xtr4nge/FruityWifi.git
@@ -11,33 +10,43 @@ GITREPOROOT=/opt/ITSEC/6.Wireless/1.Wifi/fruitywifi/xtr4nge/FruityWifi
 GITCLONEDIR=/opt/ITSEC/6.Wireless/1.Wifi/fruitywifi/xtr4nge
 EXECUTEABLE1=fruitywifi.sh
 EXECUTEABLE2=fruitywifi
-#ph1b
 DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/6.Wireless/1.Wifi/fruitywifi
 DSKTPFLSDEST=/home/$USER/.local/share/applications/6.Wireless/1.Wifi/fruitywifi
 DSKTPFL=fruity-wifi.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/6.Wireless/1.Wifi/fruitywifi
-#ph1a
 
-echo "${bold}
- _____ ____  _   _ ___ _______   ____        _____ _____ ___ 
-|  ___|  _ \| | | |_ _|_   _\ \ / /\ \      / /_ _|  ___|_ _|
-| |_  | |_) | | | || |  | |  \ V /  \ \ /\ / / | || |_   | | 
-|  _| |  _ <| |_| || |  | |   | |    \ V  V /  | ||  _|  | | 
-|_|   |_| \_\\___/|___| |_|   |_|     \_/\_/  |___|_|   |___|
-        
-INSTALL
-${normal}"
+BANNER () {
+	echo "${bold}
+	 _____ ____  _   _ ___ _______   ____        _____ _____ ___ 
+	|  ___|  _ \| | | |_ _|_   _\ \ / /\ \      / /_ _|  ___|_ _|
+	| |_  | |_) | | | || |  | |  \ V /  \ \ /\ / / | || |_   | | 
+	|  _| |  _ <| |_| || |  | |   | |    \ V  V /  | ||  _|  | | 
+	|_|   |_| \_\\___/|___| |_|   |_|     \_/\_/  |___|_|   |___|
+		
+	INSTALL
+	${normal}"
+}
 
-#plh11
+DEPS () {
+	sudo apt-get update
+	sudo apt-get upgrade
+	xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-fruitywifi.txt") -r -- sudo apt-get install -y
+	### DEPS END
+}
+
+BINEXEC () {
+	echo "!/bin/bash
+
+	cd /opt/ITSEC/6.Wireless/1.Wifi/fruitywifi/xtr4nge/FruityWifi
+	sudo nginx_start.sh
+	sudo php7.0-fpm_start.sh
+	firefox https://localhost:8443 </dev/null &>/dev/null &" > $EXECUTEABLE1
+	CHMODXEX1
+}
+
+BANNER
 GITCLONEFUNC 
-
-### DEPS:
-
-sudo apt-get update
-sudo apt-get upgrade
-xargs -a <(awk '/^\s*[^#]/' "$APTLSTDIR/deps-fruitywifi.txt") -r -- sudo apt-get install -y
-### DEPS END
-
+DEPS
 GITSBMDLINIT
 
 sudo systemctl enable dnsmasq.service 
@@ -68,18 +77,8 @@ sed -i 's#/usr/share/fruitywifi/www#/opt/ITSEC/6.Wireless/1.Wifi/fruitywifi/xtr4
 
 ./install-FruityWiFi-PHP7.sh
 
-
-echo "!/bin/bash
-
-cd /opt/ITSEC/6.Wireless/1.Wifi/fruitywifi/xtr4nge/FruityWifi
-sudo nginx_start.sh
-sudo php7.0-fpm_start.sh
-firefox https://localhost:8443 </dev/null &>/dev/null &" > $EXECUTEABLE1
-CHMODXEX1
-
+BINEXEC
 SYMLINKEX2TO1
-
-#333d 
 CPDESKTFL
 
 

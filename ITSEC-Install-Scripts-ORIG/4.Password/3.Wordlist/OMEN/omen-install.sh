@@ -16,26 +16,23 @@ DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/4.Password/3.Wordlist/omen
 DSKTPFLSDEST=/home/$USER/.local/share/applications/4.Password/3.Wordlist/omen
 DSKTPFL=omen.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/4.Password/3.Wordlist/omen
-#ph1a
 
-echo "${bold}
-  ___  __  __ _____ _   _ 
- / _ \|  \/  | ____| \ | |
-| | | | |\/| |  _| |  \| |
-| |_| | |  | | |___| |\  |
- \___/|_|  |_|_____|_| \_|
-                          
-/RUB-SysSec/OMEN
-INSTALL
-${normal}"
 
-#plh11
+BANNER () {
+	echo "${bold}
+	  ___  __  __ _____ _   _ 
+	 / _ \|  \/  | ____| \ | |
+	| | | | |\/| |  _| |  \| |
+	| |_| | |  | | |___| |\  |
+	 \___/|_|  |_|_____|_| \_|
+		                  
+	/RUB-SysSec/OMEN
+	INSTALL
+	${normal}"
+}
+
+BANNER
 GITCLONEFUNC
-
-### DEPS:
-# no deps noted, feel free to add ...
-### DEPS END
-
 GITSBMDLINIT
 
 make
@@ -54,6 +51,5 @@ CHMODXEX3
 sudo rm -f $BINDIR/$EXECUTEABLE4
 SYMLINKEX2TO1
 sudo ln -s $GITREPOROOT/$EXECUTEABLE3 $BINDIR/$EXECUTEABLE4
-#333d
 
 CPDESKTFL

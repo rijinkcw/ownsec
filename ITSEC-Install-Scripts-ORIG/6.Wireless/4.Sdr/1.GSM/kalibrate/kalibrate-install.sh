@@ -9,28 +9,29 @@ DSKTPFLS=/opt/ownsec/ITSEC-Install-Scripts-ORIG/6.Wireless/4.Sdr/1.GSM/gr-gsm
 DSKTPFLSDEST=/home/$USER/.local/share/applications/3.Exploitation-Tools/6.Wireless/4.Sdr/1.GSM/kalibrate-rtl
 DSKTPFL=kalibrate-rtl.desktop
 APTLSTDIR=/opt/ownsec/ITSEC-Install-Scripts-ORIG/3.Exploitation-Tools/6.Wireless/4.Sdr/1.GSM/kalibrate-rtl
-#ph1a
 
-echo "${bold}
- _  __    _    _     ___ ____  ____      _  _____ _____ 
-| |/ /   / \  | |   |_ _| __ )|  _ \    / \|_   _| ____|
-| ' /   / _ \ | |    | ||  _ \| |_) |  / _ \ | | |  _|  
-| . \  / ___ \| |___ | || |_) |  _ <  / ___ \| | | |___ 
-|_|\_\/_/   \_\_____|___|____/|_| \_\/_/   \_\_| |_____|
-                                                                                  
-INSTALL
-${normal}"
+BANNER () {
+	echo "${bold}
+	 _  __    _    _     ___ ____  ____      _  _____ _____ 
+	| |/ /   / \  | |   |_ _| __ )|  _ \    / \|_   _| ____|
+	| ' /   / _ \ | |    | ||  _ \| |_) |  / _ \ | | |  _|  
+	| . \  / ___ \| |___ | || |_) |  _ <  / ___ \| | | |___ 
+	|_|\_\/_/   \_\_____|___|____/|_| \_\/_/   \_\_| |_____|
+		                                                                          
+	INSTALL
+	${normal}"
+}
 
-#plh11
+BUILD () {
+	./bootstrap
+	./configure
+	make -j 4
+}
+
+
+BANNER
 GITCLONEFUNC
-
-### DEPS:
-# no deps noted, feel free to add ...
-### DEPS END
-
 make clean
 GITSBMDLINIT
-./bootstrap
-./configure
-make -j 4
+BUILD
 sudo make install
