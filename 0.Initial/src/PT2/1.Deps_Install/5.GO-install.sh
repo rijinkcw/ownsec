@@ -1,8 +1,8 @@
 #!/bin/bash -i
 
 BRANCH=18.04-bionic_beaver
-GITREPO=git://github.com/alphaaurigae/go-install.git
-GITREPOROOT=/opt/DEPS/go-install
+GITREPO=git://github.com/alphaaurigae/bash_installs.git
+GITREPOROOT=/opt/DEPS/alphaaurigae/bash_installs/go-install
 GITCLONEDIR=/opt/DEPS
 EXEC1=go-apt-install.sh
 

@@ -1,8 +1,8 @@
 #!/bin/bash -i
 
 BRANCH=18.04-bionic_beaver
-GITREPO=git://github.com/alphaaurigae/rbenv-ruby_install.git
-GITREPOROOT=/opt/DEPS/rbenv-ruby_install
+GITREPO=git://github.com/alphaaurigae/bash_installs.git
+GITREPOROOT=/opt/DEPS/alphaaurigae/bash_installs/rbenv-ruby_install
 GITCLONEDIR=/opt/DEPS
 EXEC1=Rbenv-Ruby_Install_GitHub.sh
 

@@ -1,8 +1,8 @@
 #!/bin/bash -i
 
 BRANCH=18.04-bionic_beaver
-GITREPO=git://github.com/alphaaurigae/nvm_node-npm_install.git
-GITREPOROOT=/opt/DEPS/nvm_node-npm_install
+GITREPO=git://github.com/alphaaurigae/bash_installs.git
+GITREPOROOT=/opt/DEPS/alphaaurigae/bash_installs/nvm_node-npm_install
 GITCLONEDIR=/opt/DEPS
 EXEC1=1.Install_NVM.sh
 EXEC2=2.NVM_Install_NODE-NPM.sh
